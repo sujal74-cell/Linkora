@@ -159,4 +159,3 @@ V19: Removed the old “Existing classes” dropdown group and its TY-CSE/TY-IT/
 V20-live: Updated only the homepage hero slogan to ‘YOUR TEAM IS ONE LINK AWAY’. The pending OTP source remains separate until its email-service environment variables are configured.
 
 V21: Replaced the generated Linkora SVG mark with the user-supplied connected-network logo (cleaned to a transparent 720px asset) across navigation, login, footer, 404 and splash placements. Added a lightweight transform/opacity intro with rotating orbital rings, converging stage particles and node-like sparks; header hover remains subtle.
-LinkOra is connected to Vercel for automatic deployments.
