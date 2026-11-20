@@ -2,26 +2,22 @@
    LINKORA — shared UI + page logic
    ============================================================ */
 
-/* ---------- animated logo (SVG) ---------- */
+/* ---------- animated logo (shared cinematic treatment) ----------
+   Layers (back → front): ambient glow · bloom · chromatic rims · cast shadow
+   · the original untouched raster mark · specular sheen · comet ring · particles.
+   All motion is transform/opacity only; the source PNG is never modified. */
 const LOGO_SVG = `
-<span class="network-logo" role="img" aria-label="Linkora connected network logo">
-  <span class="network-logo-glass-back" aria-hidden="true"></span>
-  <span class="network-logo-glass-face" aria-hidden="true"></span>
-  <span class="network-logo-glass-caustic" aria-hidden="true"></span>
-  <span class="network-logo-aura" aria-hidden="true"></span>
-  <span class="network-logo-pulse pulse-a" aria-hidden="true"></span>
-  <span class="network-logo-pulse pulse-b" aria-hidden="true"></span>
-  <span class="network-logo-ring network-logo-ring-a" aria-hidden="true"></span>
-  <span class="network-logo-ring network-logo-ring-b" aria-hidden="true"></span>
-  <span class="network-logo-orbit orbit-a" aria-hidden="true"><i></i></span>
-  <span class="network-logo-orbit orbit-b" aria-hidden="true"><i></i></span>
-  <img class="network-logo-img" src="assets/img/linkora-network-logo.png" alt="" decoding="async">
-  <span class="network-logo-glass-reflection" aria-hidden="true"></span>
-  <span class="network-logo-glass-glint" aria-hidden="true"></span>
-  <span class="network-logo-shine" aria-hidden="true"></span>
-  <span class="network-logo-spark spark-a" aria-hidden="true"></span>
-  <span class="network-logo-spark spark-b" aria-hidden="true"></span>
-  <span class="network-logo-spark spark-c" aria-hidden="true"></span>
+<span class="lk" role="img" aria-label="Linkora connected network logo">
+  <span class="lk-ambient" aria-hidden="true"></span>
+  <span class="lk-plate" aria-hidden="true"></span>
+  <span class="lk-bloom" aria-hidden="true"><img src="assets/img/linkora-network-logo.png" alt="" decoding="async"></span>
+  <span class="lk-rim lk-rim-cyan" aria-hidden="true"></span>
+  <span class="lk-rim lk-rim-violet" aria-hidden="true"></span>
+  <img class="lk-img" src="assets/img/linkora-network-logo.png" alt="Linkora logo" decoding="async">
+  <span class="lk-reflect" aria-hidden="true"><img src="assets/img/linkora-network-logo.png" alt="" decoding="async"></span>
+  <span class="lk-sheen" aria-hidden="true"></span>
+  <span class="lk-comet" aria-hidden="true"></span>
+  <span class="lk-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
 </span>`;
 
 /* ---------- navigation ---------- */
@@ -163,6 +159,39 @@ function counters(){
   });
 }
 
+/* ---------- interactive 3D tilt for the logo ----------
+   A subtle, physics-feeling tilt on the shared logo mark. Desktop
+   (fine pointer) only, disabled for reduced-motion users. Uses nested
+   transform layers, so entrance animations on child layers never fight it. */
+function initLogoTilt(){
+  try{
+    if(window.matchMedia && (window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.matchMedia("(pointer: coarse)").matches)) return;
+    const MAX = 11;
+    document.querySelectorAll("[data-logo]").forEach(host=>{
+      const inner = host.querySelector(".lk");
+      if(!inner || host._lkTiltBound) return;
+      host._lkTiltBound = true;
+      let raf = 0;
+      host.addEventListener("pointermove", e=>{
+        const r = host.getBoundingClientRect();
+        if(r.width < 2 || r.height < 2) return;
+        const px = ((e.clientX - (r.left + r.width/2)) / (r.width/2));
+        const py = ((e.clientY - (r.top + r.height/2)) / (r.height/2));
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(()=>{
+          inner.style.transition = "transform .12s cubic-bezier(.2,.7,.3,1)";
+          inner.style.transform = "rotateY(" + (px*MAX).toFixed(2) + "deg) rotateX(" + (-py*MAX).toFixed(2) + "deg)";
+        });
+      }, {passive:true});
+      host.addEventListener("pointerleave", ()=>{
+        cancelAnimationFrame(raf);
+        inner.style.transition = "transform .62s cubic-bezier(.2,.9,.24,1.18)";
+        inner.style.transform = "rotateY(0deg) rotateX(0deg)";
+      }, {passive:true});
+    });
+  }catch(e){ /* tilt is progressive enhancement */ }
+}
+
 /* ---------- splash intro (landing page) ---------- */
 function runSplash(){
   const s = document.getElementById("splash");
@@ -175,7 +204,7 @@ function runSplash(){
     s.classList.add("out");
     setTimeout(()=>s.remove(), 650);
   };
-  let introDelay = 3650;
+  let introDelay = 3250;
   try{ if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) introDelay = 550; }catch(e){}
   const t = setTimeout(finish, introDelay);
   s.addEventListener("click", ()=>{ clearTimeout(t); finish(); });
@@ -216,7 +245,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
   const page = location.pathname.split("/").pop() || "index.html";
   renderNav(page);
   if(!PUBLIC_PAGES.includes(page)) requireAuth();
-  animateBars(); revealOnScroll(); tiltCards(); counters(); bindTabs(); runSplash();
+  animateBars(); revealOnScroll(); tiltCards(); counters(); bindTabs(); runSplash(); initLogoTilt();
 
   const u = me();
   if(u){

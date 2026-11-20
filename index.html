@@ -23,10 +23,7 @@
 <body>
 <div class="splash" id="splash">
   <div class="logo-wrap">
-    <div class="splash-logo-stage" aria-hidden="true">
-      <span class="logo-ellipse e1"></span><span class="logo-burst"></span>
-      <span class="logo-particle p1"></span><span class="logo-particle p2"></span><span class="logo-particle p3"></span><span class="logo-particle p4"></span>
-      <span class="splash-spark s1"></span><span class="splash-spark s2"></span><span class="splash-spark s3"></span><span class="splash-spark s4"></span>
+    <div class="splash-logo-stage">
       <div id="splash-logo" data-logo></div>
     </div>
     <div class="logo-word" id="splash-word"></div>
@@ -40,7 +37,7 @@
   if(!w) return;
   'LINKORA'.split('').forEach(function(ch,i){
     var s = document.createElement('span');
-    s.textContent = ch; s.style.animationDelay = (1.42 + i*0.075) + 's';
+    s.textContent = ch; s.style.animationDelay = (1.82 + i*0.068) + 's';
     w.appendChild(s);
   });
 })();
