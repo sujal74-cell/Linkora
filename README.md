@@ -159,3 +159,17 @@ V19: Removed the old “Existing classes” dropdown group and its TY-CSE/TY-IT/
 V20-live: Updated only the homepage hero slogan to ‘YOUR TEAM IS ONE LINK AWAY’. The pending OTP source remains separate until its email-service environment variables are configured.
 
 V21: Replaced the generated Linkora SVG mark with the user-supplied connected-network logo (cleaned to a transparent 720px asset) across navigation, login, footer, 404 and splash placements. Added a lightweight transform/opacity intro with rotating orbital rings, converging stage particles and node-like sparks; header hover remains subtle.
+
+
+## Update v24 — cinematic logo motion (navbar, login, dashboard & footer)
+The original raster emblem is untouched; the surrounding motion was rebuilt end to end.
+A shared `.lk` layer stack (ambient studio glow · controlled bloom · chromatic cyan/violet rim
+light masked to the mark · glossy brushed-metal glass tile on compact placements · masked
+specular sweep · splash-only comet light-trail, converging micro-particles, floor reflection and
+cast shadow) gives the logo a premium 3D presence. Timeline: 0–0.55s ambient rise, 0.5–1.6s
+light-trail reveal + converging particles, 0.6–2.15s eased settle with reflection, 2.5s specular
+sweep, then a calm ambient breathing idle. Interactive pointer tilt (desktop, fine pointer) on
+every logo placement. Compositor-friendly (transform/opacity only), no WebGL, no continuous
+spinning/bouncing, respects `prefers-reduced-motion`, particles hidden on phones. Applied
+everywhere via the shared `[data-logo]` markup in `assets/js/app.js` with styles in the V24
+section of `assets/css/styles.css`; the splash auto-dismisses at ~3.25s or on click.
