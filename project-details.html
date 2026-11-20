@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project Details | Linkora — Class Project Team Platform</title>
+<meta name="description" content="Project goals, roles required, skills, timeline and team members.">
+<meta name="theme-color" content="#eef1f8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='120' y2='120'%3E%3Cstop stop-color='%23a78bfa'/%3E%3Cstop offset='.5' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23f472b6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='60' cy='60' r='44' fill='none' stroke='url(%23g)' stroke-width='6' stroke-dasharray='14 10'/%3E%3Ccircle cx='40' cy='52' r='12' fill='url(%23g)'/%3E%3Ccircle cx='80' cy='68' r='12' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/brand/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
+<meta property="og:title" content="Linkora — Class Project Team Formation Platform">
+<meta property="og:description" content="Project goals, roles required, skills, timeline and team members.">
+<meta property="og:image" content="assets/img/og-preview.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/img/og-preview.png">
+<link rel="preload" as="image" href="assets/img/hero-dashboard.png">
+<script>(function(){try{var t=localStorage.getItem("linkora_theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");else document.documentElement.removeAttribute("data-theme");}catch(e){}var p=(location.pathname.split("/").pop()||"index.html");var pub=["index.html","login.html","register.html","about.html","404.html"];if(pub.indexOf(p)===-1)document.documentElement.classList.add("app-page");})();</script>
+<link rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+<body>
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand"><span data-logo></span><span class="brand-text">Linkora</span></a>
+    <nav class="nav-links" data-nav></nav>
+    <a href="profile.html" class="avatar" title="My profile" data-user-initials>LK</a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main class="container" style="padding-bottom:4rem;padding-top:2.2rem">
+  <div class="crumb small muted mb-1"><a href="projects.html">Discover</a> / Project details</div>
+  <div id="dup" class="mb-1"></div>
+  <div class="card mb-2" style="padding:1.6rem" id="head"></div>
+  <div class="split-b">
+    <div class="list">
+      <div class="card"><h3 style="margin-bottom:.8rem">Problem statement</h3><p class="small" id="problem" style="margin:0"></p></div>
+      <div class="card" id="gaps"></div>
+      <div class="card"><h3 style="margin-bottom:.8rem">Timeline</h3><div id="timeline"></div></div>
+    </div>
+    <div class="list">
+      <div class="card" id="why"></div>
+      <div class="card"><div class="row-b mb-1"><h3 style="margin:0">Roles required</h3><span class="badge b-brand">Requirements</span></div><div class="list" id="roles"></div></div>
+      <div class="card"><div class="row-b mb-1"><h3 style="margin:0">Current team</h3><span class="badge b-info">Members</span></div><div class="list" id="members"></div></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div>
+        <a href="index.html" class="brand" style="margin-bottom:.8rem"><span data-logo></span><span class="brand-text">Linkora</span></a>
+        <p class="small">A private, class-based platform for discovering project ideas, forming balanced teams and collaborating until submission.</p>
+        <div class="row" style="gap:.4rem">
+          <span class="chip"><span style="color:var(--ok)">●</span> &nbsp;TY-CSE-A workspace</span>
+          <span class="chip">Invite: LINKORA-2026</span>
+        </div>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="projects.html">Project Discovery</a></li>
+          <li><a href="matches.html">Matches</a></li>
+          <li><a href="workspace.html">Team Workspace</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Academic</h4>
+        <ul>
+          <li><a href="faculty.html">Faculty Dashboard</a></li>
+          <li><a href="admin.html">Administration</a></li>
+          <li><a href="notifications.html">Notifications</a></li>
+          <li><a href="applications.html">Requests</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Linkora</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#privacy">Privacy Policy</a></li>
+          <li><a href="about.html#terms">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 Linkora · Class Project Team Formation &amp; Collaboration Platform</span>
+      <span>Built for TY-CSE-A · Guide: Prof. S. Deshpande</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+function pageInit(){}
+
+let cur = null;
+function pageInit(){
+  const id = new URLSearchParams(location.search).get('id') || 'p1';
+  cur = P(id); if(!cur) return;
+  const u = me(), sc = u ? compatScore(u, cur) : null;
+  const owner = U(cur.owner), filled = cur.roles.filter(r=>r.filled).length;
+  const isMember = u && (cur.members.includes(u.id) || cur.owner===u.id);
+  document.getElementById('problem').textContent = cur.problem;
+  const dup = duplicateOf(cur.title, cur.problem, cur.id);
+
+  document.getElementById('head').innerHTML = `
+    <div class="row-b" style="margin-bottom:.6rem">
+      <span class="badge b-brand">${cur.domain}</span>
+      <span class="small muted">Posted ${cur.created} by ${owner.name}</span>
+    </div>
+    <h1 style="margin-bottom:.3rem">${cur.title}</h1>
+    <p style="max-width:720px">${cur.tagline}</p>
+    <div class="row" style="gap:.5rem;margin:.9rem 0">
+      <span class="chip">👥 Team size ${cur.size}</span>
+      <span class="chip">🗓 ${cur.timeline}</span>
+      <span class="chip">⏳ Apply by ${cur.deadline}</span>
+      <span class="chip">🔗 ${cur.github}</span>
+    </div>
+    <div class="row" style="gap:.6rem">
+      ${isMember ? `<a class="btn btn-primary" href="workspace.html?p=${cur.id}">Open workspace</a>`
+                 : `<button class="btn btn-primary" onclick="applyModal()">Apply for a role</button>`}
+      <button class="btn" onclick="toast('Project saved to your shortlist')">Save</button>
+      ${sc?`<div class="row" style="gap:.5rem;margin-left:auto">${scoreRing(sc.total)}<div><div class="small muted">Your match</div><b>${sc.total>=75?'Strong fit':sc.total>=50?'Good fit':'Partial fit'}</b></div></div>`:''}
+    </div>`;
+
+  document.getElementById('roles').innerHTML = cur.roles.map(r=>`
+    <div class="item" style="align-items:flex-start">
+      ${r.filled?avImg(U(r.filled),'sm'):'<div class="avatar sm">＋</div>'}
+      <div class="grow"><div class="t">${r.role}</div>
+        <div class="row" style="gap:.3rem;margin-top:.3rem">${chips(r.skills,'chip skill')}</div></div>
+      ${r.filled ? `<span class="badge b-ok">Filled · ${U(r.filled).name}</span>` : `<span class="badge b-warn">Open</span>`}
+    </div>`).join('');
+
+  document.getElementById('members').innerHTML = cur.members.map(m=>`
+    <div class="item">${avImg(U(m),'sm')}
+      <div class="grow"><div class="t">${U(m).name}</div><div class="s">${U(m).roll} · ${(U(m).roles[0]||'Member')}</div></div>
+      <span class="badge b-info">${U(m).availability||'—'}</span></div>`).join('');
+
+  const g = skillGaps(cur);
+  document.getElementById('gaps').innerHTML = `
+    <div class="row-b mb-1"><h3 style="margin:0">Team health</h3><span class="badge ${filled===cur.roles.length?'b-ok':'b-warn'}">${filled}/${cur.roles.length} roles filled</span></div>
+    <div class="bar" style="margin-bottom:.9rem"><i data-w="${Math.round(filled/cur.roles.length*100)}"></i></div>
+    <p class="small muted" style="margin-bottom:.3rem">Open roles</p>
+    <div class="row" style="gap:.35rem;margin-bottom:.9rem">${chips(g.openRoles)}</div>
+    <p class="small muted" style="margin-bottom:.3rem">Missing skills (skill-gap detection)</p>
+    <div class="row" style="gap:.35rem">${g.open.length?chips(g.open,'chip skill'):'<span class="badge b-ok">Balanced team</span>'}</div>`;
+
+  document.getElementById('timeline').innerHTML = (cur.milestones||[]).length ? '' : `
+    <div class="list">
+      <div class="step"><div class="num">1</div><div><div class="t">Idea published</div><div class="s small">${cur.created}</div></div></div>
+      <div class="step"><div class="num">2</div><div><div class="t">Team formation</div><div class="s small">Until ${cur.deadline}</div></div></div>
+      <div class="step"><div class="num">3</div><div><div class="t">Build sprints</div><div class="s small">${cur.timeline}</div></div></div>
+      <div class="step"><div class="num">4</div><div><div class="t">Faculty review &amp; submission</div><div class="s small">Final week</div></div></div>
+    </div>`;
+
+  if(sc){
+    document.getElementById('why').innerHTML = `
+      <div class="row-b mb-1"><h3 style="margin:0">Why this matches you</h3>${scoreRing(sc.total,true)}</div>
+      ${progress(sc.skills,'Required skills')}${progress(sc.interests,'Shared interests')}${progress(sc.availability,'Availability')}${progress(sc.experience,'Relevant experience')}
+      ${sc.missing.length?`<p class="small muted mt-1">Skills to build: ${sc.missing.join(', ')}.</p>`:`<p class="small muted mt-1">You already cover every required skill.</p>`}`;
+  }
+  if(dup){
+    document.getElementById('dup').innerHTML = `<div class="card pad-sm" style="border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.08)">
+      <div class="row"><span style="font-size:1.2rem">⚠️</span><div><b>Duplicate idea check</b><div class="small muted">This is ${dup.pct}% similar to <a href="project-details.html?id=${dup.p.id}" style="color:var(--brand-2)">${dup.p.title}</a>. Consider merging teams.</div></div></div></div>`;
+  }
+  animateBars();
+}
+function applyModal(){
+  const open = cur.roles.filter(r=>!r.filled);
+  openModal(`
+    <div class="row-b mb-1"><h3 style="margin:0">Apply to ${cur.title}</h3><button class="btn btn-sm btn-ghost" onclick="closeModal()">✕</button></div>
+    <div class="field"><label>Select role</label><select class="select" id="ap-role">${open.map(r=>`<option>${r.role}</option>`).join('')}</select></div>
+    <div class="field"><label>Why are you a good fit?</label><textarea class="textarea" id="ap-msg" placeholder="Mention relevant skills and past work…"></textarea></div>
+    <button class="btn btn-primary btn-block" onclick="submitApp()">Send application</button>`);
+}
+function submitApp(){
+  const role = document.getElementById('ap-role').value;
+  const msg = document.getElementById('ap-msg').value.trim() || 'Interested in this role.';
+  db.applications.push({id:'a'+Date.now(), project:cur.id, from:db.user, role:role, msg:msg, status:'pending', date:new Date().toISOString().slice(0,10)});
+  db.notifications.unshift({id:'n'+Date.now(),type:'application',title:'Application sent',body:'You applied to '+cur.title+' as '+role+'.',time:'Just now',read:false,icon:'📄'});
+  saveDB(); closeModal(); toast('Application sent ✅');
+}
+
+const _pi = pageInit;
+
+</script>
+</body>
+</html>

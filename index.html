@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Home | Linkora — Class Project Team Platform</title>
+<meta name="description" content="Linkora — a private class-based platform to discover project ideas, form balanced teams and collaborate.">
+<meta name="theme-color" content="#eef1f8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='120' y2='120'%3E%3Cstop stop-color='%23a78bfa'/%3E%3Cstop offset='.5' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23f472b6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='60' cy='60' r='44' fill='none' stroke='url(%23g)' stroke-width='6' stroke-dasharray='14 10'/%3E%3Ccircle cx='40' cy='52' r='12' fill='url(%23g)'/%3E%3Ccircle cx='80' cy='68' r='12' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/brand/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
+<meta property="og:title" content="Linkora — Class Project Team Formation Platform">
+<meta property="og:description" content="Linkora — a private class-based platform to discover project ideas, form balanced teams and collaborate.">
+<meta property="og:image" content="assets/img/og-preview.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/img/og-preview.png">
+<link rel="preload" as="image" href="assets/img/hero-dashboard.png">
+<script>(function(){try{var t=localStorage.getItem("linkora_theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");else document.documentElement.removeAttribute("data-theme");}catch(e){}var p=(location.pathname.split("/").pop()||"index.html");var pub=["index.html","login.html","register.html","about.html","404.html"];if(pub.indexOf(p)===-1)document.documentElement.classList.add("app-page");})();</script>
+<link rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+<body>
+<div class="splash" id="splash">
+  <div class="logo-wrap">
+    <div class="splash-logo-stage" aria-hidden="true">
+      <span class="logo-ellipse e1"></span><span class="logo-burst"></span>
+      <span class="logo-particle p1"></span><span class="logo-particle p2"></span><span class="logo-particle p3"></span><span class="logo-particle p4"></span>
+      <span class="splash-spark s1"></span><span class="splash-spark s2"></span><span class="splash-spark s3"></span><span class="splash-spark s4"></span>
+      <div id="splash-logo" data-logo></div>
+    </div>
+    <div class="logo-word" id="splash-word"></div>
+    <div class="logo-tag">Class Project Teams</div>
+    <div class="splash-bar"><i></i></div>
+  </div>
+</div>
+<script>
+(function(){
+  var w = document.getElementById('splash-word');
+  if(!w) return;
+  'LINKORA'.split('').forEach(function(ch,i){
+    var s = document.createElement('span');
+    s.textContent = ch; s.style.animationDelay = (1.42 + i*0.075) + 's';
+    w.appendChild(s);
+  });
+})();
+</script>
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand"><span data-logo></span><span class="brand-text">Linkora</span></a>
+    <nav class="nav-links" data-nav></nav>
+    <a href="profile.html" class="avatar" title="My profile" data-user-initials>LK</a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main>
+<section class="hero">
+  <div class="container split">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Private class workspace · TY-CSE-A</span>
+      <h1 style="margin-top:1.1rem">YOUR TEAM IS<br><span class="grad">ONE LINK AWAY</span></h1>
+      <p class="lead">Linkora replaces random grouping with a transparent, skill-based process — from publishing an idea and matching classmates to managing tasks, milestones and submissions in one shared workspace.</p>
+      <div class="row" style="margin:1.6rem 0 1rem">
+        <a href="register.html" class="btn btn-primary">Get started free <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="projects.html" class="btn">Browse projects</a>
+      </div>
+      <div class="row small muted" style="gap:1.2rem">
+        <span>✓ Verified college email</span><span>✓ Skill-based matching</span><span>✓ Faculty visibility</span>
+      </div>
+      <div class="grid g4" style="margin-top:2.4rem">
+        <div class="stat"><div class="n grad" data-count="186">0</div><div class="k">Students</div></div>
+        <div class="stat"><div class="n grad" data-count="42" >0</div><div class="k">Projects</div></div>
+        <div class="stat"><div class="n grad" data-count="94" data-suffix="%">0</div><div class="k">Teams filled</div></div>
+        <div class="stat"><div class="n grad" data-count="12" >0</div><div class="k">Faculty mentors</div></div>
+      </div>
+    </div>
+    <div class="card" style="padding:1.4rem">
+      <div class="row-b" style="margin-bottom:1rem">
+        <div><div class="small muted">Top match for you</div><h3 style="margin:0">CampusConnect</h3></div>
+        <div class="score" style="--v:88;--c:#34d399"><span>88</span></div>
+      </div>
+      <p class="small">A private event + noticeboard app for our college. 2 of 4 roles filled.</p>
+      <div class="small muted" style="margin:.7rem 0 .35rem">Compatibility breakdown</div>
+      <div class="small">Required skills <b style="float:right">92%</b></div><div class="bar" style="margin:.35rem 0 .7rem"><i data-w="92"></i></div>
+      <div class="small">Shared interests <b style="float:right">80%</b></div><div class="bar" style="margin:.35rem 0 .7rem"><i data-w="80"></i></div>
+      <div class="small">Availability <b style="float:right">85%</b></div><div class="bar" style="margin:.35rem 0 .7rem"><i data-w="85"></i></div>
+      <div class="small">Relevant experience <b style="float:right">75%</b></div><div class="bar" style="margin:.35rem 0 .9rem"><i data-w="75"></i></div>
+      <div class="row" style="gap:.4rem"><span class="badge b-ok">Frontend</span><span class="badge b-info">React</span><span class="badge b-warn">Docs role open</span></div>
+      <a href="matches.html" class="btn btn-primary btn-block" style="margin-top:1rem">See all matches</a>
+    </div>
+  </div>
+</section>
+
+
+<section style="padding-top:.5rem">
+  <div class="container">
+    <div class="showcase reveal">
+      <img src="assets/img/hero-dashboard.png" alt="Linkora student dashboard with match scores and project cards">
+      <div class="showcase-cap">
+        <span class="chip" style="background:rgba(10,16,32,.85)">🏫 Live workspace · TY-CSE-A</span>
+        <span class="chip" style="background:rgba(10,16,32,.85)">6 open projects</span>
+        <span class="chip" style="background:rgba(10,16,32,.85)">18 open roles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Why Linkora</span>
+      <h2>Everything a class project needs,<br>from idea to submission</h2>
+      <p>Structured team formation, transparent matching and a shared workspace — built for students, visible to faculty.</p>
+    </div>
+    <div class="grid g3">
+      <div class="fcard reveal">
+  <div class="ficon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6l4 4M19 5l-4 4m-6 6l-4 4"/></svg></div>
+  <h3>Skill-based matching</h3>
+  <p class="small" style="margin:0">A transparent compatibility score compares required skills, shared interests, availability and experience — and shows why.</p>
+</div><div class="fcard reveal">
+  <div class="ficon"><svg viewBox="0 0 24 24" fill="none"><path d="M16 19v-1a4 4 0 00-4-4H7a4 4 0 00-4 4v1M9.5 7a3.5 3.5 0 100 7 3.5 3.5 0 000-7zM21 19v-1a4 4 0 00-3-3.9"/></svg></div>
+  <h3>Structured team formation</h3>
+  <p class="small" style="margin:0">Creators define roles; students apply or get invited. No more random groups formed five minutes before a deadline.</p>
+</div><div class="fcard reveal">
+  <div class="ficon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v14H4zM4 10h16M10 10v9"/></svg></div>
+  <h3>Team workspace</h3>
+  <p class="small" style="margin:0">Private chat, task board, milestones, file links, meetings and repository access for accepted members.</p>
+</div><div class="fcard reveal">
+  <div class="ficon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg></div>
+  <h3>Private class community</h3>
+  <p class="small" style="margin:0">Access is restricted through verified college credentials or a class invitation code.</p>
+</div><div class="fcard reveal">
+  <div class="ficon"><svg viewBox="0 0 24 24" fill="none"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7zm10 3a3 3 0 100-6 3 3 0 000 6z"/></svg></div>
+  <h3>Faculty visibility</h3>
+  <p class="small" style="margin:0">Mentors review team formation, progress and unassigned students without controlling everyday teamwork.</p>
+</div><div class="fcard reveal">
+  <div class="ficon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z"/></svg></div>
+  <h3>Custom enhancements</h3>
+  <p class="small" style="margin:0">Skill-gap detection, duplicate-idea alerts, contribution tracking and a student portfolio of completed work.</p>
+</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container split">
+    <div class="reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Seven steps from joining<br>to a finished project</h2>
+      <p class="small">The complete Linkora workflow — simple enough for a first-year student, structured enough for faculty review.</p>
+      <a href="register.html" class="btn btn-primary" style="margin-top:1rem">Join your class workspace</a>
+    </div>
+    <div class="list">
+      <div class="item reveal"><div class="num step-num" style="width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;font-weight:850;background:linear-gradient(135deg,#8b6bff,#22d3ee);color:#080c16">1</div><div class="grow"><div class="t">Join the class</div><div class="s">Register with your college email, PRN number and class invitation code.</div></div></div><div class="item reveal"><div class="num step-num" style="width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;font-weight:850;background:linear-gradient(135deg,#8b6bff,#22d3ee);color:#080c16">2</div><div class="grow"><div class="t">Build your profile</div><div class="s">Add skills with proficiency, interests, availability and preferred roles.</div></div></div><div class="item reveal"><div class="num step-num" style="width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;font-weight:850;background:linear-gradient(135deg,#8b6bff,#22d3ee);color:#080c16">3</div><div class="grow"><div class="t">Create or discover projects</div><div class="s">Publish your idea with role requirements, or browse suitable opportunities.</div></div></div><div class="item reveal"><div class="num step-num" style="width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;font-weight:850;background:linear-gradient(135deg,#8b6bff,#22d3ee);color:#080c16">4</div><div class="grow"><div class="t">Match and connect</div><div class="s">Linkora recommends candidates; students apply and creators send invitations.</div></div></div><div class="item reveal"><div class="num step-num" style="width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;font-weight:850;background:linear-gradient(135deg,#8b6bff,#22d3ee);color:#080c16">5</div><div class="grow"><div class="t">Finalize the team</div><div class="s">The creator accepts members until every required role is filled.</div></div></div><div class="item reveal"><div class="num step-num" style="width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;font-weight:850;background:linear-gradient(135deg,#8b6bff,#22d3ee);color:#080c16">6</div><div class="grow"><div class="t">Collaborate</div><div class="s">Manage tasks, milestones, meetings, files and the repo inside the workspace.</div></div></div><div class="item reveal"><div class="num step-num" style="width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;font-weight:850;background:linear-gradient(135deg,#8b6bff,#22d3ee);color:#080c16">7</div><div class="grow"><div class="t">Monitor and complete</div><div class="s">Faculty review progress; finished projects become part of your portfolio.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Transparent scoring</span>
+      <h2>Compatibility you can actually understand</h2>
+      <p>Every recommendation shows the factors behind the score, so students know why a match was suggested.</p>
+    </div>
+    <div class="grid g4 reveal">
+      <div class="card center"><div class="score" style="--v:50;--c:#8b6bff;margin:0 auto .8rem"><span>50%</span></div><h3>Required skills</h3><p class="small">Proficiency in the skills each open role asks for.</p></div>
+      <div class="card center"><div class="score" style="--v:20;--c:#22d3ee;margin:0 auto .8rem"><span>20%</span></div><h3>Shared interests</h3><p class="small">Common project domains and interest tags.</p></div>
+      <div class="card center"><div class="score" style="--v:20;--c:#a78bfa;margin:0 auto .8rem"><span>20%</span></div><h3>Availability</h3><p class="small">Overlapping weekly hours that fit the timeline.</p></div>
+      <div class="card center"><div class="score" style="--v:10;--c:#f472b6;margin:0 auto .8rem"><span>10%</span></div><h3>Experience</h3><p class="small">Relevant past projects, internships and achievements.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Built for the whole class</span>
+      <h2>One platform, three views</h2>
+      <p>Students form teams, mentors monitor progress, coordinators keep the community safe — all from the same private workspace.</p>
+    </div>
+    <div class="grid g3">
+      <article class="card picard reveal">
+        <img src="assets/img/collaboration.png" alt="Students forming a project team" loading="lazy">
+        <div><h3>For students</h3><p class="small" style="margin:0">Discover ideas, get matched on skills and collaborate in one workspace until submission.</p></div>
+      </article>
+      <article class="card picard reveal">
+        <img src="assets/img/faculty.png" alt="Faculty dashboard overview" loading="lazy">
+        <div><h3>For faculty</h3><p class="small" style="margin:0">Review team formation, spot incomplete teams and students who still need a group.</p></div>
+      </article>
+      <article class="card picard reveal">
+        <img src="assets/img/workspace.png" alt="Team workspace with tasks and chat" loading="lazy">
+        <div><h3>For teams</h3><p class="small" style="margin:0">Chat, tasks, milestones, files, meetings and the repository — in one shared place.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="card reveal cta-bg" style="padding:clamp(1.6rem,4vw,3rem);text-align:center;position:relative;overflow:hidden">
+      <div class="orb c"></div>
+      <span class="eyebrow">Ready to start?</span>
+      <h2 style="margin-top:1rem">Your next project team is one click away</h2>
+      <p style="max-width:560px;margin:0 auto 1.6rem">Register with your college email and class code, complete your skill profile, and get matched within minutes.</p>
+      <div class="row" style="justify-content:center">
+        <a href="register.html" class="btn btn-primary">Create your profile</a>
+        <a href="login.html" class="btn">I already have an account</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div>
+        <a href="index.html" class="brand" style="margin-bottom:.8rem"><span data-logo></span><span class="brand-text">Linkora</span></a>
+        <p class="small">A private, class-based platform for discovering project ideas, forming balanced teams and collaborating until submission.</p>
+        <div class="row" style="gap:.4rem">
+          <span class="chip"><span style="color:var(--ok)">●</span> &nbsp;TY-CSE-A workspace</span>
+          <span class="chip">Invite: LINKORA-2026</span>
+        </div>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="projects.html">Project Discovery</a></li>
+          <li><a href="matches.html">Matches</a></li>
+          <li><a href="workspace.html">Team Workspace</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Academic</h4>
+        <ul>
+          <li><a href="faculty.html">Faculty Dashboard</a></li>
+          <li><a href="admin.html">Administration</a></li>
+          <li><a href="notifications.html">Notifications</a></li>
+          <li><a href="applications.html">Requests</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Linkora</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#privacy">Privacy Policy</a></li>
+          <li><a href="about.html#terms">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 Linkora · Class Project Team Formation &amp; Collaboration Platform</span>
+      <span>Built for TY-CSE-A · Guide: Prof. S. Deshpande</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+function pageInit(){}
+
+</script>
+</body>
+</html>

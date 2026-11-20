@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Student Profile | Linkora — Class Project Team Platform</title>
+<meta name="description" content="Skills, proficiency, interests, availability and preferred project roles.">
+<meta name="theme-color" content="#eef1f8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='120' y2='120'%3E%3Cstop stop-color='%23a78bfa'/%3E%3Cstop offset='.5' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23f472b6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='60' cy='60' r='44' fill='none' stroke='url(%23g)' stroke-width='6' stroke-dasharray='14 10'/%3E%3Ccircle cx='40' cy='52' r='12' fill='url(%23g)'/%3E%3Ccircle cx='80' cy='68' r='12' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/brand/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
+<meta property="og:title" content="Linkora — Class Project Team Formation Platform">
+<meta property="og:description" content="Skills, proficiency, interests, availability and preferred project roles.">
+<meta property="og:image" content="assets/img/og-preview.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/img/og-preview.png">
+<link rel="preload" as="image" href="assets/img/hero-dashboard.png">
+<script>(function(){try{var t=localStorage.getItem("linkora_theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");else document.documentElement.removeAttribute("data-theme");}catch(e){}var p=(location.pathname.split("/").pop()||"index.html");var pub=["index.html","login.html","register.html","about.html","404.html"];if(pub.indexOf(p)===-1)document.documentElement.classList.add("app-page");})();</script>
+<link rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+<body>
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand"><span data-logo></span><span class="brand-text">Linkora</span></a>
+    <nav class="nav-links" data-nav></nav>
+    <a href="profile.html" class="avatar" title="My profile" data-user-initials>LK</a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="pagehead">
+  <div class="orb a"></div>
+  <div class="container">
+    <div class="crumb">Home / Profile</div>
+    <h1>Student Profile</h1>
+    <p class="muted" style="max-width:640px;margin:0">Keep this updated — it drives every match, recommendation and skill-gap alert.</p>
+  </div>
+</div>
+<main class="container" style="padding-bottom:4rem">
+  <div class="split-b">
+    <div class="list">
+      <div class="card center" style="padding:1.6rem">
+        <div class="avatar lg" style="margin:0 auto .8rem;overflow:hidden" data-user-initials><img data-user-avatar alt="Profile photo" style="width:100%;height:100%;object-fit:cover;border-radius:50%" onerror="this.remove()"></div>
+        <h3 style="margin:0" data-user-name>Student</h3>
+        <p class="small" style="margin:.2rem 0 .8rem" data-user-meta>roll · class</p>
+        <div class="row" style="justify-content:center;gap:.4rem"><span class="badge b-ok">Verified</span><span class="badge b-info" data-user-cls>TY-CSE-A</span></div>
+        <div class="mt-2" style="text-align:left" id="p-skills-mini"></div>
+      </div>
+      <div class="card pad-sm">
+        <h3 style="margin-bottom:.6rem">Availability</h3>
+        <p class="small muted">Weekly hours you can commit. Used for 20% of the match score.</p>
+        <div class="row" style="gap:.4rem">
+          <span class="chip pick" onclick="document.getElementById('p-avail').value='6-10 hrs/week'">6-10 hrs</span>
+          <span class="chip pick" onclick="document.getElementById('p-avail').value='10-15 hrs/week'">10-15 hrs</span>
+          <span class="chip pick" onclick="document.getElementById('p-avail').value='15-20 hrs/week'">15-20 hrs</span>
+        </div>
+      </div>
+      <div class="card pad-sm">
+        <h3 style="margin-bottom:.6rem">Portfolio</h3>
+        <p class="small muted">Completed projects appear here automatically after faculty approval.</p>
+        <div class="list">
+          <div class="item"><div class="grow"><div class="t small">Smart Attendance System</div><div class="s">2025 · Frontend Developer</div></div><span class="badge b-ok">Endorsed</span></div>
+          <div class="item"><div class="grow"><div class="t small">College Fest Website</div><div class="s">2025 · UI/UX Designer</div></div><span class="badge b-info">React</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="list">
+      <div class="card">
+        <h3 style="margin-bottom:1rem">Basic details</h3>
+        <div class="form-row">
+          <div class="field"><label>Full name</label><input class="input" id="p-name"></div>
+          <div class="field"><label>PRN number</label><input class="input" id="p-roll"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>College email</label><input class="input" id="p-email" disabled></div>
+          <div class="field"><label>Class / Division</label><select class="select" id="p-cls">
+              <optgroup label="First Year — 2026–27 timetable">
+                <option>FY-MECH-A</option><option>FY-MECH-B</option><option>FY-MECH-C</option>
+                <option>FY-ENTC-D</option><option>FY-ENTC-E</option><option>FY-ENTC-F</option>
+                <option>FY-VLSI-G</option>
+                <option>FY-CIVIL-H</option><option>FY-CIVIL-RL-I</option>
+                <option>FY-COMP-J</option><option>FY-COMP-K</option><option>FY-COMP-L</option><option>FY-COMP-M</option>
+                <option>FY-COMP-R-N</option>
+                <option>FY-IT-O</option><option>FY-IT-P</option>
+                <option>FY-AI-ML-Q</option><option>FY-AI-ML-R</option>
+              </optgroup>
+            </select></div>
+        </div>
+        <div class="field"><label>Weekly availability</label><input class="input" id="p-avail" placeholder="e.g. 10-15 hrs/week"></div>
+        <div class="field"><label>Relevant experience</label><textarea class="textarea" id="p-exp" placeholder="Hackathons, internships, certifications, past projects…"></textarea></div>
+        <div class="field"><label>Short bio</label><textarea class="textarea" id="p-bio" placeholder="One or two lines about how you like to work."></textarea></div>
+      </div>
+
+      <div class="card">
+        <div class="row-b mb-1"><h3 style="margin:0">Skills &amp; proficiency</h3><span class="badge b-brand">50% of match score</span></div>
+        <div class="row mb-1" style="gap:.5rem">
+          <select class="select" id="p-skill-sel" style="flex:1"><option>React</option><option>Node.js</option><option>Python</option><option>Flask</option><option>Django</option><option>MongoDB</option><option>MySQL</option><option>Firebase</option><option>UI/UX Design</option><option>Figma</option><option>Machine Learning</option><option>Data Analysis</option><option>TensorFlow</option><option>Flutter</option><option>Android</option><option>Java</option><option>C++</option><option>DSA</option><option>Cloud / AWS</option><option>Docker</option><option>Git</option><option>Technical Writing</option><option>Canva</option><option>Video Editing</option><option>IoT / Arduino</option><option>Cybersecurity</option><option>Blockchain</option><option>React Native</option></select>
+          <select class="select" id="p-skill-level" style="width:150px"><option value="40">Beginner</option><option value="65" selected>Intermediate</option><option value="85">Advanced</option><option value="100">Expert</option></select>
+          <button class="btn btn-primary" onclick="addSkill()">Add</button>
+        </div>
+        <div class="list" id="p-skills"></div>
+      </div>
+
+      <div class="card">
+        <div class="row-b mb-1"><h3 style="margin:0">Interests</h3><span class="badge b-info">20% of match score</span></div>
+        <div id="p-interests" class="mb-1"></div>
+        <div class="row" style="gap:.4rem" id="p-interest-pool"></div>
+      </div>
+
+      <div class="card">
+        <div class="row-b mb-1"><h3 style="margin:0">Preferred roles</h3><span class="badge b-warn">Used for matching</span></div>
+        <div id="p-roles" class="mb-1"></div>
+        <div class="row" style="gap:.4rem" id="p-role-pool"></div>
+      </div>
+
+      <div class="row" style="justify-content:flex-end">
+        <button class="btn" onclick="pageInit()">Discard</button>
+        <button class="btn btn-primary" onclick="saveProfile()">Save profile</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div>
+        <a href="index.html" class="brand" style="margin-bottom:.8rem"><span data-logo></span><span class="brand-text">Linkora</span></a>
+        <p class="small">A private, class-based platform for discovering project ideas, forming balanced teams and collaborating until submission.</p>
+        <div class="row" style="gap:.4rem">
+          <span class="chip"><span style="color:var(--ok)">●</span> &nbsp;TY-CSE-A workspace</span>
+          <span class="chip">Invite: LINKORA-2026</span>
+        </div>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="projects.html">Project Discovery</a></li>
+          <li><a href="matches.html">Matches</a></li>
+          <li><a href="workspace.html">Team Workspace</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Academic</h4>
+        <ul>
+          <li><a href="faculty.html">Faculty Dashboard</a></li>
+          <li><a href="admin.html">Administration</a></li>
+          <li><a href="notifications.html">Notifications</a></li>
+          <li><a href="applications.html">Requests</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Linkora</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#privacy">Privacy Policy</a></li>
+          <li><a href="about.html#terms">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 Linkora · Class Project Team Formation &amp; Collaboration Platform</span>
+      <span>Built for TY-CSE-A · Guide: Prof. S. Deshpande</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+function pageInit(){}
+
+let draft = null;
+function pageInit(){
+  const u = me(); if(!u) return;
+  draft = JSON.parse(JSON.stringify(u));
+  document.getElementById('p-name').value = u.name;
+  document.getElementById('p-roll').value = u.roll || '';
+  document.getElementById('p-email').value = u.email || '';
+  document.getElementById('p-cls').value = u.cls || 'TY-CSE-A';
+  document.getElementById('p-avail').value = u.availability || '';
+  document.getElementById('p-exp').value = u.exp || '';
+  document.getElementById('p-bio').value = u.bio || '';
+  document.getElementById('p-skills-mini').innerHTML = '<div class="small muted mb-1">Top skills</div><div class="row" style="gap:.35rem">' + skillChips(u,5) + '</div>';
+  renderProfile();
+}
+function renderProfile(){
+  const skills = document.getElementById('p-skills');
+  skills.innerHTML = draft.skills.length ? draft.skills.map((s,i)=>`
+    <div class="item" style="padding:.6rem .8rem">
+      <div class="grow"><div class="t small">${s.n}</div><div class="bar thin" style="margin-top:.35rem"><i data-w="${s.p}"></i></div></div>
+      <input type="range" min="20" max="100" value="${s.p}" oninput="draft.skills[${i}].p=+this.value;this.nextElementSibling.textContent=this.value" style="width:110px">
+      <b style="width:30px;text-align:right;font-size:.85rem">${s.p}</b>
+      <span class="x" onclick="draft.skills.splice(${i},1);renderProfile()">✕</span>
+    </div>`).join('') : '<p class="small muted">No skills added yet.</p>';
+  document.getElementById('p-interests').innerHTML = draft.interests.length ? draft.interests.map((x,i)=>`<span class="chip skill">${x} <span class="x" onclick="draft.interests.splice(${i},1);renderProfile()">✕</span></span>`).join('') : '<span class="small muted">None selected</span>';
+  document.getElementById('p-roles').innerHTML = draft.roles.length ? draft.roles.map((x,i)=>`<span class="chip skill">${x} <span class="x" onclick="draft.roles.splice(${i},1);renderProfile()">✕</span></span>`).join('') : '<span class="small muted">None selected</span>';
+  document.getElementById('p-interest-pool').innerHTML = INTERESTS.map(i=>`<span class="chip pick ${draft.interests.includes(i)?'on':''}" onclick="toggleIn('interests','${i}')">${i}</span>`).join('');
+  document.getElementById('p-role-pool').innerHTML = ROLES.map(r=>`<span class="chip pick ${draft.roles.includes(r)?'on':''}" onclick="toggleIn('roles','${r}')">${r}</span>`).join('');
+  animateBars();
+}
+function toggleIn(k,v){
+  const a = draft[k]; const i = a.indexOf(v);
+  if(i>=0) a.splice(i,1); else a.push(v);
+  renderProfile();
+}
+function addSkill(){
+  const sel = document.getElementById('p-skill-sel'), n = sel.value, p = +document.getElementById('p-skill-level').value;
+  if(!n) return;
+  if(draft.skills.some(s=>s.n===n)){ toast('Skill already added','warn'); return; }
+  draft.skills.push({n:n,p:p}); renderProfile(); toast(n+' added');
+}
+function saveProfile(){
+  const u = me(); if(!u) return;
+  u.name = document.getElementById('p-name').value.trim() || u.name;
+  u.roll = document.getElementById('p-roll').value.trim();
+  u.cls  = document.getElementById('p-cls').value;
+  u.availability = document.getElementById('p-avail').value.trim();
+  u.exp = document.getElementById('p-exp').value.trim();
+  u.bio = document.getElementById('p-bio').value.trim();
+  u.skills = draft.skills; u.interests = draft.interests; u.roles = draft.roles;
+  saveDB(); toast('Profile saved ✅');
+  setTimeout(()=>location.reload(), 700);
+}
+
+</script>
+</body>
+</html>

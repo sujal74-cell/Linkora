@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Faculty Dashboard | Linkora — Class Project Team Platform</title>
+<meta name="description" content="Monitor teams, projects, progress and unassigned students.">
+<meta name="theme-color" content="#eef1f8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='120' y2='120'%3E%3Cstop stop-color='%23a78bfa'/%3E%3Cstop offset='.5' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23f472b6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='60' cy='60' r='44' fill='none' stroke='url(%23g)' stroke-width='6' stroke-dasharray='14 10'/%3E%3Ccircle cx='40' cy='52' r='12' fill='url(%23g)'/%3E%3Ccircle cx='80' cy='68' r='12' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/brand/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
+<meta property="og:title" content="Linkora — Class Project Team Formation Platform">
+<meta property="og:description" content="Monitor teams, projects, progress and unassigned students.">
+<meta property="og:image" content="assets/img/og-preview.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/img/og-preview.png">
+<link rel="preload" as="image" href="assets/img/hero-dashboard.png">
+<script>(function(){try{var t=localStorage.getItem("linkora_theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");else document.documentElement.removeAttribute("data-theme");}catch(e){}var p=(location.pathname.split("/").pop()||"index.html");var pub=["index.html","login.html","register.html","about.html","404.html"];if(pub.indexOf(p)===-1)document.documentElement.classList.add("app-page");})();</script>
+<link rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+<body>
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand"><span data-logo></span><span class="brand-text">Linkora</span></a>
+    <nav class="nav-links" data-nav></nav>
+    <a href="profile.html" class="avatar" title="My profile" data-user-initials>LK</a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="pagehead">
+  <div class="orb a"></div>
+  <div class="container">
+    <div class="crumb">Home / Faculty</div>
+    <h1>Faculty Dashboard</h1>
+    <p class="muted" style="max-width:640px;margin:0">A read-only overview of team formation, project topics and progress across the class.</p>
+  </div>
+</div>
+<main class="container" style="padding-bottom:4rem">
+  <div class="grid g4 mb-2" id="f-stats"></div>
+  <div class="split-b">
+    <div class="list">
+      <div class="card"><h3 style="margin-bottom:.8rem">Project topics by domain</h3><div id="f-topics"></div></div>
+      <div class="card"><div class="row-b mb-1"><h3 style="margin:0">Incomplete teams</h3><span class="badge b-warn">Needs attention</span></div><div class="list" id="f-incomplete"></div></div>
+    </div>
+    <div class="list">
+      <div class="card"><h3 style="margin-bottom:.8rem">Team overview</h3><div id="f-teams"></div></div>
+      <div class="card"><div class="row-b mb-1"><h3 style="margin:0">Students without a team</h3><span class="badge b-bad">Alert</span></div><div id="f-unassigned"></div>
+        <button class="btn btn-primary btn-block mt-1" onclick="toast('Alert sent to the class coordinator')">Alert class coordinator</button></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div>
+        <a href="index.html" class="brand" style="margin-bottom:.8rem"><span data-logo></span><span class="brand-text">Linkora</span></a>
+        <p class="small">A private, class-based platform for discovering project ideas, forming balanced teams and collaborating until submission.</p>
+        <div class="row" style="gap:.4rem">
+          <span class="chip"><span style="color:var(--ok)">●</span> &nbsp;TY-CSE-A workspace</span>
+          <span class="chip">Invite: LINKORA-2026</span>
+        </div>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="projects.html">Project Discovery</a></li>
+          <li><a href="matches.html">Matches</a></li>
+          <li><a href="workspace.html">Team Workspace</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Academic</h4>
+        <ul>
+          <li><a href="faculty.html">Faculty Dashboard</a></li>
+          <li><a href="admin.html">Administration</a></li>
+          <li><a href="notifications.html">Notifications</a></li>
+          <li><a href="applications.html">Requests</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Linkora</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#privacy">Privacy Policy</a></li>
+          <li><a href="about.html#terms">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 Linkora · Class Project Team Formation &amp; Collaboration Platform</span>
+      <span>Built for TY-CSE-A · Guide: Prof. S. Deshpande</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+function pageInit(){}
+
+function pageInit(){
+  const teams = db.projects;
+  const filledTeams = teams.filter(p=>p.roles.every(r=>r.filled));
+  const unassigned = db.users.filter(u=>!teams.some(p=>p.members.includes(u.id)));
+  document.getElementById('f-stats').innerHTML = `
+    <div class="stat"><div class="n grad">${teams.length}</div><div class="k">Total projects</div></div>
+    <div class="stat"><div class="n grad">${filledTeams.length}</div><div class="k">Complete teams</div></div>
+    <div class="stat"><div class="n grad">${teams.length-filledTeams.length}</div><div class="k">Incomplete teams</div></div>
+    <div class="stat"><div class="n grad">${unassigned.length}</div><div class="k">Unassigned students</div></div>`;
+
+  document.getElementById('f-teams').innerHTML = `<div class="twrap"><table class="table">
+    <tr><th>Project</th><th>Domain</th><th>Owner</th><th>Roles filled</th><th>Progress</th><th>Status</th></tr>
+    ${teams.map(p=>{
+      const f = p.roles.filter(r=>r.filled).length;
+      const prog = Math.round(db.tasks.filter(t=>t.project===p.id&&t.state==='done').length / Math.max(1,db.tasks.filter(t=>t.project===p.id).length)*100);
+      const complete = f===p.roles.length;
+      return `<tr><td><b>${p.title}</b></td><td>${p.domain}</td><td>${U(p.owner).name}</td>
+        <td>${f}/${p.roles.length}</td>
+        <td style="min-width:130px"><div class="bar thin"><i data-w="${prog}"></i></div><span class="small muted">${prog}%</span></td>
+        <td><span class="badge ${complete?'b-ok':f>=p.roles.length/2?'b-warn':'b-bad'}">${complete?'Complete':f>=p.roles.length/2?'Forming':'At risk'}</span></td></tr>`;
+    }).join('')}</table></div>`;
+
+  document.getElementById('f-incomplete').innerHTML = teams.filter(p=>!p.roles.every(r=>r.filled)).map(p=>{
+    const g = skillGaps(p);
+    return `<div class="card pad-sm" style="padding:0;overflow:hidden">
+      <div style="padding:1rem"><div class="row-b"><b>${p.title}</b><span class="badge b-warn">${p.roles.filter(r=>!r.filled).length} open</span></div>
+      <div class="small muted mt-1">Missing: ${g.openRoles.join(', ')}</div>
+      <div class="row mt-1" style="gap:.35rem">${chips(g.open,'chip skill')}</div>
+      <div class="row mt-1" style="gap:.5rem">
+        <button class="btn btn-sm btn-primary" onclick="toast('Recommendations nudged to matching students')">Nudge matches</button>
+        <a class="btn btn-sm" href="matches.html?p=${p.id}">View matches</a></div></div></div></div>`;
+  }).join('') || emptyBox('Every team is complete.','🎉');
+
+  document.getElementById('f-unassigned').innerHTML = `<div class="twrap"><table class="table">
+    <tr><th>Student</th><th>PRN</th><th>Top skill</th><th>Availability</th><th>Suggested project</th><th>Action</th></tr>
+    ${unassigned.map(u=>{
+      const best = db.projects.map(p=>({p,s:compatScore(u,p)})).sort((a,b)=>b.s.total-a.s.total)[0];
+      return `<tr><td><div class="row" style="gap:.5rem">${avImg(u,'sm')}${u.name}</div></td>
+        <td>${u.roll}</td><td>${u.skills[0]?u.skills[0].n:'—'}</td><td>${u.availability||'—'}</td>
+        <td>${best?best.p.title+' ('+best.s.total+'%)':'—'}</td>
+        <td><button class="btn btn-sm btn-ok" onclick="toast('Suggestion sent to ${u.name.split(' ')[0]}')">Suggest</button></td></tr>`;
+    }).join('')}</table></div>`;
+
+  document.getElementById('f-topics').innerHTML = (function(){
+    const doms = {}; db.projects.forEach(p=>doms[p.domain]=(doms[p.domain]||0)+1);
+    return Object.keys(doms).map(d=>`<div style="margin-bottom:.6rem"><div class="row-b small"><span>${d}</span><b>${doms[d]}</b></div><div class="bar thin"><i data-w="${Math.round(doms[d]/db.projects.length*100)}"></i></div></div>`).join('');
+  })();
+  animateBars();
+}
+
+</script>
+</body>
+</html>

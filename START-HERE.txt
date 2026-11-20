@@ -1,0 +1,49 @@
+==========================================================
+  LINKORA - DEPLOY IN 30 SECONDS  (read this first!)
+==========================================================
+
+STEP 1 - UNZIP
+  Right-click linkora.zip -> "Extract All..." (Windows)
+  or double-click it (Mac).
+
+STEP 2 - FIND index.html
+  Open the extracted folder. You MUST see these files
+  directly inside it:
+
+      index.html      <-- must be visible right here
+      dashboard.html
+      about.html
+      assets/
+      vercel.json
+
+  If instead you see ANOTHER folder (for example
+  "linkora" containing index.html), open that inner
+  folder and use THAT one.
+
+STEP 3 - DEPLOY  (pick one)
+
+  A) VERCEL drag & drop  (fastest)
+     1. Go to: https://vercel.com/new
+     2. Drag the folder that contains index.html onto
+        the page (drag the FOLDER, not the .zip file).
+     3. Click Deploy. Do not change any setting.
+
+  B) NETLIFY drop  (if Vercel still 404s)
+     1. Go to: https://app.netlify.com/drop
+     2. Drag the same folder onto the page.
+     3. Done - you get a live link instantly.
+
+----------------------------------------------------------
+ IF VERCEL STILL SHOWS "404: PAGE COULD NOT BE FOUND"
+----------------------------------------------------------
+  * In Vercel: open your project -> Settings -> General
+    -> Root Directory -> it must be EMPTY (showing ".").
+    If it says "linkora" or anything else, delete it and
+    click Save, then Deployments -> Redeploy.
+  * Never upload the .zip file itself - upload the
+    extracted folder.
+  * If you used GitHub: index.html must be at the ROOT
+    of the repository, not inside a sub-folder.
+    Then in Vercel, Import the repo and keep every
+    setting default (this project needs no build).
+==========================================================

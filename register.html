@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Register | Linkora — Class Project Team Platform</title>
+<meta name="description" content="Create your verified Linkora student account.">
+<meta name="theme-color" content="#eef1f8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='120' y2='120'%3E%3Cstop stop-color='%23a78bfa'/%3E%3Cstop offset='.5' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23f472b6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='60' cy='60' r='44' fill='none' stroke='url(%23g)' stroke-width='6' stroke-dasharray='14 10'/%3E%3Ccircle cx='40' cy='52' r='12' fill='url(%23g)'/%3E%3Ccircle cx='80' cy='68' r='12' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/brand/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
+<meta property="og:title" content="Linkora — Class Project Team Formation Platform">
+<meta property="og:description" content="Create your verified Linkora student account.">
+<meta property="og:image" content="assets/img/og-preview.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/img/og-preview.png">
+<link rel="preload" as="image" href="assets/img/hero-dashboard.png">
+<script>(function(){try{var t=localStorage.getItem("linkora_theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");else document.documentElement.removeAttribute("data-theme");}catch(e){}var p=(location.pathname.split("/").pop()||"index.html");var pub=["index.html","login.html","register.html","about.html","404.html"];if(pub.indexOf(p)===-1)document.documentElement.classList.add("app-page");})();</script>
+<link rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+<body>
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand"><span data-logo></span><span class="brand-text">Linkora</span></a>
+    <nav class="nav-links" data-nav></nav>
+    <a href="profile.html" class="avatar" title="My profile" data-user-initials>LK</a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main>
+<div class="container" style="max-width:1000px;padding-bottom:4rem">
+  <div class="split" style="gap:3rem;align-items:start;padding-top:3rem">
+    <div>
+      <span class="eyebrow">Step 1 of 2</span>
+      <h1 style="margin-top:1rem">Join your<br><span class="grad">class workspace</span></h1>
+      <p>Registration is restricted to verified students. Use your college email, PRN number and the class invitation code shared by your faculty coordinator.</p>
+      <div class="list mt-2">
+        <div class="item"><div class="ficon" style="margin:0;width:38px;height:38px"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg></div><div class="grow"><div class="t">Verified accounts only</div><div class="s">College email + PRN number + class code</div></div></div>
+        <div class="item"><div class="ficon" style="margin:0;width:38px;height:38px"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v6m0 8v6M2 12h6m8 0h6M5 5l4 4m6 6l4 4M19 5l-4 4m-6 6l-4 4"/></svg></div><div class="grow"><div class="t">Instant matching</div><div class="s">Complete your profile and see compatible projects</div></div></div>
+        <div class="item"><div class="ficon" style="margin:0;width:38px;height:38px"><svg viewBox="0 0 24 24" fill="none"><path d="M6 11h12v10H6zM9 11V7a3 3 0 016 0v4"/></svg></div><div class="grow"><div class="t">Private by default</div><div class="s">Your data stays inside your class community</div></div></div>
+      </div>
+    </div>
+    <div class="card" style="padding:1.6rem">
+      <h2 style="font-size:1.5rem;margin-bottom:.2rem">Create account</h2>
+      <p class="small mb-2">Already registered? <a href="login.html" style="color:var(--brand-2);font-weight:700">Log in</a></p>
+      <form onsubmit="submitRegister(event)" novalidate>
+        <div class="field"><label>Full name <span class="req">*</span></label><input class="input" name="name" required placeholder="Aarav Sharma"><div class="err"></div></div>
+        <div class="form-row">
+          <div class="field"><label>College email <span class="req">*</span></label><input class="input" name="email" type="email" required placeholder="you@pccoepune.org"><div class="err"></div></div>
+          <div class="field"><label>PRN number <span class="req">*</span></label><input class="input" name="roll" required placeholder="220701"><div class="err"></div></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Class / Division <span class="req">*</span></label>
+            <select class="select" name="cls" required>
+              <option value="">Select class / division</option>
+              <optgroup label="First Year — 2026–27 timetable">
+                <option>FY-MECH-A</option><option>FY-MECH-B</option><option>FY-MECH-C</option>
+                <option>FY-ENTC-D</option><option>FY-ENTC-E</option><option>FY-ENTC-F</option>
+                <option>FY-VLSI-G</option>
+                <option>FY-CIVIL-H</option><option>FY-CIVIL-RL-I</option>
+                <option>FY-COMP-J</option><option>FY-COMP-K</option><option>FY-COMP-L</option><option>FY-COMP-M</option>
+                <option>FY-COMP-R-N</option>
+                <option>FY-IT-O</option><option>FY-IT-P</option>
+                <option>FY-AI-ML-Q</option><option>FY-AI-ML-R</option>
+              </optgroup>
+            </select><div class="err"></div></div>
+          <div class="field"><label>Year <span class="req">*</span></label>
+            <select class="select" name="year" required><option value="">Select</option><option>First Year</option><option>Second Year</option><option>Third Year</option><option>Final Year</option></select><div class="err"></div></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Branch</label><select class="select" name="branch"><option>CSE</option><option>IT</option><option>ENTC</option><option>Mechanical</option><option>Electrical</option></select></div>
+          <div class="field"><label>Class invitation code <span class="req">*</span></label><input class="input" name="code" required placeholder="LINKORA-2026"><div class="err"></div><div class="hint">Shared by your class coordinator</div></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Password <span class="req">*</span></label><input class="input" name="password" type="password" required placeholder="Min. 6 characters"><div class="err"></div></div>
+          <div class="field"><label>Confirm password <span class="req">*</span></label><input class="input" name="confirm" type="password" required placeholder="Repeat password"><div class="err"></div></div>
+        </div>
+        <label class="checkline mb-2"><input type="checkbox" name="terms"><span>I agree to the <a href="about.html#terms" style="color:var(--brand-2)">Terms of Use</a> and <a href="about.html#privacy" style="color:var(--brand-2)">Privacy Policy</a>, and confirm I am a student of this class.</span></label>
+        <button class="btn btn-primary btn-block">Create my account</button>
+        <button type="button" class="btn btn-ghost btn-block mt-1" onclick="demoLogin()">Continue with demo student</button>
+      </form>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div>
+        <a href="index.html" class="brand" style="margin-bottom:.8rem"><span data-logo></span><span class="brand-text">Linkora</span></a>
+        <p class="small">A private, class-based platform for discovering project ideas, forming balanced teams and collaborating until submission.</p>
+        <div class="row" style="gap:.4rem">
+          <span class="chip"><span style="color:var(--ok)">●</span> &nbsp;TY-CSE-A workspace</span>
+          <span class="chip">Invite: LINKORA-2026</span>
+        </div>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="projects.html">Project Discovery</a></li>
+          <li><a href="matches.html">Matches</a></li>
+          <li><a href="workspace.html">Team Workspace</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Academic</h4>
+        <ul>
+          <li><a href="faculty.html">Faculty Dashboard</a></li>
+          <li><a href="admin.html">Administration</a></li>
+          <li><a href="notifications.html">Notifications</a></li>
+          <li><a href="applications.html">Requests</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Linkora</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#privacy">Privacy Policy</a></li>
+          <li><a href="about.html#terms">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 Linkora · Class Project Team Formation &amp; Collaboration Platform</span>
+      <span>Built for TY-CSE-A · Guide: Prof. S. Deshpande</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+function pageInit(){}
+
+function submitRegister(e){
+  e.preventDefault();
+  const f = e.target; let ok = true;
+  f.querySelectorAll('[required]').forEach(el=>{
+    const err = el.parentElement.querySelector('.err');
+    if(!el.value.trim()){ ok=false; el.style.borderColor='rgba(251,113,133,.7)'; if(err){err.textContent = el.name==='email' ? 'Your @pccoepune.org email is required.' : 'This field is required.'; err.classList.add('show');} }
+    else if(el.name==='email' && !/^[^\s@]+@pccoepune\.org$/i.test(el.value.trim())){ ok=false; el.style.borderColor='rgba(251,113,133,.7)'; if(err){err.textContent='Email must end with @pccoepune.org (e.g. you@pccoepune.org).';err.classList.add('show');} }
+    else { el.style.borderColor=''; if(err) err.classList.remove('show'); }
+  });
+  const code = f.code.value.trim().toUpperCase();
+  if(code && code !== db.settings.inviteCode){ ok=false; toast('Invalid class invitation code. Try LINKORA-2026','warn'); }
+  const pwd = f.password.value, cp = f.confirm.value;
+  if(pwd.length < 6){ ok=false; toast('Password must be at least 6 characters','warn'); }
+  else if(pwd !== cp){ ok=false; toast('Passwords do not match','warn'); }
+  if(!f.terms.checked){ ok=false; toast('Please accept the terms and privacy policy','warn'); }
+  if(!ok) return;
+  const id = 'u' + (db.users.length + 1);
+  db.users.push({id:id, name:f.name.value.trim(), email:f.email.value.trim(), roll:f.roll.value.trim(),
+    cls:f.cls.value, year:f.year.value, branch:f.branch.value, skills:[], interests:[], roles:[],
+    availability:'', exp:'', bio:'', portfolio:[]});
+  db.user = id; saveDB();
+  toast('Account created. Welcome to Linkora!');
+  setTimeout(()=>location.href='profile.html', 900);
+}
+function submitLogin(e){
+  e.preventDefault();
+  const f = e.target, v = f.id.value.trim().toLowerCase();
+  if(v.includes('@') && !/^[^\s@]+@pccoepune\.org$/.test(v)){ toast('Email must end with @pccoepune.org','warn'); return; }
+  const u = db.users.find(x => x.email.toLowerCase()===v || x.roll===v || x.name.toLowerCase()===v);
+  if(!u){ toast('No student found with those details','warn'); return; }
+  if(f.password.value.length < 6){ toast('Password must be at least 6 characters','warn'); return; }
+  loginAs(u.id);
+}
+function demoLogin(){ loginAs('u1'); }
+
+</script>
+</body>
+</html>

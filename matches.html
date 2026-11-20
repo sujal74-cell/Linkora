@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matches | Linkora — Class Project Team Platform</title>
+<meta name="description" content="Ranked teammate recommendations with visible compatibility factors.">
+<meta name="theme-color" content="#eef1f8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='120' y2='120'%3E%3Cstop stop-color='%23a78bfa'/%3E%3Cstop offset='.5' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23f472b6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='60' cy='60' r='44' fill='none' stroke='url(%23g)' stroke-width='6' stroke-dasharray='14 10'/%3E%3Ccircle cx='40' cy='52' r='12' fill='url(%23g)'/%3E%3Ccircle cx='80' cy='68' r='12' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/brand/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
+<meta property="og:title" content="Linkora — Class Project Team Formation Platform">
+<meta property="og:description" content="Ranked teammate recommendations with visible compatibility factors.">
+<meta property="og:image" content="assets/img/og-preview.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/img/og-preview.png">
+<link rel="preload" as="image" href="assets/img/hero-dashboard.png">
+<script>(function(){try{var t=localStorage.getItem("linkora_theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");else document.documentElement.removeAttribute("data-theme");}catch(e){}var p=(location.pathname.split("/").pop()||"index.html");var pub=["index.html","login.html","register.html","about.html","404.html"];if(pub.indexOf(p)===-1)document.documentElement.classList.add("app-page");})();</script>
+<link rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+<body>
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand"><span data-logo></span><span class="brand-text">Linkora</span></a>
+    <nav class="nav-links" data-nav></nav>
+    <a href="profile.html" class="avatar" title="My profile" data-user-initials>LK</a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="pagehead">
+  <div class="orb a"></div>
+  <div class="container">
+    <div class="crumb">Home / Matches</div>
+    <h1>Matches</h1>
+    <p class="muted" style="max-width:640px;margin:0">Ranked classmates for each open role — with the factors behind every score.</p>
+  </div>
+</div>
+<main class="container" style="padding-bottom:4rem">
+  <div class="card mb-2" style="padding:1rem">
+    <div class="row" style="gap:.7rem">
+      <label class="small muted" style="margin:0">Recommendations for</label>
+      <select class="select" id="m-sel" style="flex:1;min-width:200px" onchange="mProject=this.value;renderMatches()"></select>
+    </div>
+    <div class="row mt-1" style="gap:.4rem" id="m-roles"></div>
+    <div class="card pad-sm mt-1" style="background:rgba(124,92,255,.08)" id="m-gap"></div>
+  </div>
+  <div class="grid g2" id="m-list"></div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div>
+        <a href="index.html" class="brand" style="margin-bottom:.8rem"><span data-logo></span><span class="brand-text">Linkora</span></a>
+        <p class="small">A private, class-based platform for discovering project ideas, forming balanced teams and collaborating until submission.</p>
+        <div class="row" style="gap:.4rem">
+          <span class="chip"><span style="color:var(--ok)">●</span> &nbsp;TY-CSE-A workspace</span>
+          <span class="chip">Invite: LINKORA-2026</span>
+        </div>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="projects.html">Project Discovery</a></li>
+          <li><a href="matches.html">Matches</a></li>
+          <li><a href="workspace.html">Team Workspace</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Academic</h4>
+        <ul>
+          <li><a href="faculty.html">Faculty Dashboard</a></li>
+          <li><a href="admin.html">Administration</a></li>
+          <li><a href="notifications.html">Notifications</a></li>
+          <li><a href="applications.html">Requests</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Linkora</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#privacy">Privacy Policy</a></li>
+          <li><a href="about.html#terms">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 Linkora · Class Project Team Formation &amp; Collaboration Platform</span>
+      <span>Built for TY-CSE-A · Guide: Prof. S. Deshpande</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+function pageInit(){}
+
+let mProject = null, mRole = '';
+function pageInit(){
+  const qp = new URLSearchParams(location.search).get('p');
+  const mine = db.projects.filter(p=>p.owner===db.user);
+  mProject = qp || (mine[0] && mine[0].id) || db.projects[0].id;
+  document.getElementById('m-sel').innerHTML = db.projects.map(p=>`<option value="${p.id}" ${p.id===mProject?'selected':''}>${p.title}</option>`).join('');
+  renderMatches();
+}
+function renderMatches(){
+  const p = P(mProject), u = me();
+  const openRoles = p.roles.filter(r=>!r.filled).map(r=>r.role);
+  document.getElementById('m-roles').innerHTML = `<span class="chip pick ${mRole===''?'on':''}" onclick="mRole='';renderMatches()">All open roles</span>` +
+    openRoles.map(r=>`<span class="chip pick ${mRole===r?'on':''}" onclick="mRole='${r}';renderMatches()">${r}</span>`).join('');
+  const pool = db.users.filter(x=>x.id!==db.user && !p.members.includes(x.id));
+  const ranked = pool.map(x=>({u:x, s:compatScore(x,p)}))
+    .filter(o=>!mRole || (o.u.roles||[]).includes(mRole) || o.s.total>60)
+    .sort((a,b)=>b.s.total-a.s.total);
+  document.getElementById('m-list').innerHTML = ranked.length ? ranked.map(o=>`
+    <div class="card hover">
+      <div class="row-b">
+        <div class="row" style="gap:.8rem">
+          ${avImg(o.u)}
+          <div><h3 style="margin:0">${o.u.name}</h3><div class="small muted">${o.u.roll} · ${o.u.cls} · ${o.u.availability||'Availability not set'}</div></div>
+        </div>
+        <div class="row" style="gap:.6rem">${scoreRing(o.s.total)}<div><div class="small muted">Compatibility</div><b>${o.s.total>=75?'Excellent':o.s.total>=55?'Good':'Fair'}</b></div></div>
+      </div>
+      <div class="row" style="gap:.35rem;margin:.8rem 0">${skillChips(o.u, 4)}</div>
+      <div class="grid g2" style="gap:.5rem 1rem;margin-bottom:.8rem">
+        ${progress(o.s.skills,'Required skills')}${progress(o.s.interests,'Shared interests')}
+        ${progress(o.s.availability,'Availability')}${progress(o.s.experience,'Experience')}
+      </div>
+      <div class="row-b">
+        <div class="small muted">${o.u.bio||''}</div>
+        <div class="row" style="gap:.5rem">
+          <button class="btn btn-sm" onclick="viewProfile('${o.u.id}')">Profile</button>
+          <button class="btn btn-sm btn-primary" onclick="invite('${o.u.id}','${p.roles.filter(r=>!r.filled)[0]?p.roles.filter(r=>!r.filled)[0].role:'Contributor'}')">Invite</button>
+        </div>
+      </div>
+    </div>`).join('') : emptyBox('No more classmates to recommend for this project.','🤝');
+  document.getElementById('m-gap').innerHTML = (function(){
+    const g = skillGaps(p);
+    if(!g.open.length) return '<span class="badge b-ok">Team is skill-balanced</span>';
+    // most useful skill = the one fewest recommended students have
+    const counts = {};
+    db.users.filter(x=>!p.members.includes(x.id)).forEach(x=>g.open.forEach(s=>{ if(skillLevel(x,s)>=60) counts[s]=(counts[s]||0)+1; }));
+    const scarcest = g.open.slice().sort((a,b)=>(counts[a]||0)-(counts[b]||0))[0];
+    return `<div class="small"><b>Skill-gap detection:</b> missing <b>${g.open.join(', ')}</b>. The most valuable addition right now is <b>${scarcest}</b> — only ${counts[scarcest]||0} classmate(s) outside the team have it.</div>`;
+  })();
+  animateBars();
+}
+function invite(uid, role){
+  const p = P(mProject);
+  db.invitations.push({id:'i'+Date.now(), project:p.id, to:uid, role:role, status:'pending', date:new Date().toISOString().slice(0,10), note:'You would be a great fit for '+p.title+'.'});
+  db.notifications.unshift({id:'n'+Date.now(),type:'invitation',title:'Invitation sent',body:'You invited '+U(uid).name+' to '+p.title+'.',time:'Just now',read:true,icon:'✉'});
+  saveDB(); toast('Invitation sent to '+U(uid).name+' ✉');
+}
+function viewProfile(id){
+  const x = U(id);
+  openModal(`<div class="row-b mb-1"><h3 style="margin:0">${x.name}</h3><button class="btn btn-sm btn-ghost" onclick="closeModal()">✕</button></div>
+    <div class="small muted mb-1">${x.roll} · ${x.cls} · ${x.year||''} ${x.branch||''}</div>
+    <p class="small">${x.bio||'—'}</p>
+    <div class="small muted">Skills</div><div class="row" style="gap:.35rem;margin:.4rem 0 .8rem">${skillChips(x)}</div>
+    <div class="small muted">Interests</div><div class="row" style="gap:.35rem;margin:.4rem 0 .8rem">${chips(x.interests)}</div>
+    <div class="small muted">Preferred roles</div><div class="row" style="gap:.35rem;margin:.4rem 0 .8rem">${chips(x.roles)}</div>
+    <div class="small muted">Experience</div><p class="small">${x.exp||'—'}</p>
+    <div class="small muted">Availability</div><p class="small">${x.availability||'—'}</p>`);
+}
+
+</script>
+</body>
+</html>

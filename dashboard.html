@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Student Dashboard | Linkora — Class Project Team Platform</title>
+<meta name="description" content="Your recommended projects, invitations, applications and team status.">
+<meta name="theme-color" content="#eef1f8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='120' y2='120'%3E%3Cstop stop-color='%23a78bfa'/%3E%3Cstop offset='.5' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23f472b6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='60' cy='60' r='44' fill='none' stroke='url(%23g)' stroke-width='6' stroke-dasharray='14 10'/%3E%3Ccircle cx='40' cy='52' r='12' fill='url(%23g)'/%3E%3Ccircle cx='80' cy='68' r='12' fill='url(%23g)'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/img/brand/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.png">
+<meta property="og:title" content="Linkora — Class Project Team Formation Platform">
+<meta property="og:description" content="Your recommended projects, invitations, applications and team status.">
+<meta property="og:image" content="assets/img/og-preview.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/img/og-preview.png">
+<link rel="preload" as="image" href="assets/img/hero-dashboard.png">
+<script>(function(){try{var t=localStorage.getItem("linkora_theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");else document.documentElement.removeAttribute("data-theme");}catch(e){}var p=(location.pathname.split("/").pop()||"index.html");var pub=["index.html","login.html","register.html","about.html","404.html"];if(pub.indexOf(p)===-1)document.documentElement.classList.add("app-page");})();</script>
+<link rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+<body>
+<header class="nav">
+  <div class="container">
+    <a href="index.html" class="brand"><span data-logo></span><span class="brand-text">Linkora</span></a>
+    <nav class="nav-links" data-nav></nav>
+    <a href="profile.html" class="avatar" title="My profile" data-user-initials>LK</a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="pagehead">
+  <div class="orb a"></div>
+  <div class="container">
+    <div class="crumb">Home / Dashboard</div>
+    <h1>Student Dashboard</h1>
+    <p class="muted" style="max-width:640px;margin:0">Your personalised overview of projects, requests and team progress.</p>
+  </div>
+</div>
+<main class="container" style="padding-bottom:4rem">
+  <div class="row-b mb-2">
+    <div><h2 style="margin:0" id="greet">Hello 👋</h2><p class="small" style="margin:0">Here is what is happening in <b data-user-cls>TY-CSE-A</b> today.</p></div>
+    <div class="row"><a href="create-project.html" class="btn btn-primary">+ Post an idea</a><a href="matches.html" class="btn">Find teammates</a></div>
+  </div>
+  <div class="grid g4 mb-2">
+    <div class="card pad-sm"><div class="row-b"><div><div class="small muted">Recommended</div><div style="font-size:1.7rem;font-weight:850" class="grad">6</div></div><div class="ficon" style="margin:0"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6z"/></svg></div></div></div>
+    <div class="card pad-sm"><div class="row-b"><div><div class="small muted">Invitations</div><div style="font-size:1.7rem;font-weight:850" class="grad">2</div></div><div class="ficon" style="margin:0"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 10-12 0c0 6-2 7-2 7h16s-2-1-2-7M10.3 20a2 2 0 003.4 0"/></svg></div></div></div>
+    <div class="card pad-sm"><div class="row-b"><div><div class="small muted">Applications</div><div style="font-size:1.7rem;font-weight:850" class="grad">2</div></div><div class="ficon" style="margin:0"><svg viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5zM14 3v5h5M9 13h6M9 17h4"/></svg></div></div></div>
+    <div class="card pad-sm"><div class="row-b"><div><div class="small muted">Team status</div><div style="font-size:1.05rem;font-weight:850">Forming</div></div><div class="ficon" style="margin:0"><svg viewBox="0 0 24 24" fill="none"><path d="M16 19v-1a4 4 0 00-4-4H7a4 4 0 00-4 4v1M9.5 7a3.5 3.5 0 100 7 3.5 3.5 0 000-7zM21 19v-1a4 4 0 00-3-3.9"/></svg></div></div></div>
+  </div>
+  <div class="split-b">
+    <div class="list">
+      <div class="card pad-sm"><div class="small muted mb-1">Profile strength</div><div id="completeness"></div><a href="profile.html" class="btn btn-sm btn-block mt-1">Improve profile</a></div>
+      <div class="card pad-sm">
+        <div class="row-b mb-1"><h3 style="margin:0">My teams</h3><span class="badge b-info" data-user-cls>TY-CSE-A</span></div>
+        <div class="list" id="teams"></div>
+      </div>
+      <div class="card pad-sm">
+        <div class="row-b mb-1"><h3 style="margin:0">Students needing a team</h3><span class="badge b-warn">Inclusive</span></div>
+        <div class="list" id="unassigned"></div>
+      </div>
+    </div>
+    <div>
+      <div class="row-b mb-1"><h2 style="margin:0;font-size:1.35rem">Recommended for you</h2><a href="projects.html" class="small" style="color:var(--brand-2)">See all →</a></div>
+      <div class="grid g3" id="recs"></div>
+      <div class="grid g2 mt-2">
+        <div class="card"><div class="row-b mb-1"><h3 style="margin:0">Invitations</h3><span class="badge b-ok">New</span></div><div class="list" id="invites"></div></div>
+        <div class="card"><div class="row-b mb-1"><h3 style="margin:0">My applications</h3><span class="badge b-warn">Pending</span></div><div class="list" id="apps"></div></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div>
+        <a href="index.html" class="brand" style="margin-bottom:.8rem"><span data-logo></span><span class="brand-text">Linkora</span></a>
+        <p class="small">A private, class-based platform for discovering project ideas, forming balanced teams and collaborating until submission.</p>
+        <div class="row" style="gap:.4rem">
+          <span class="chip"><span style="color:var(--ok)">●</span> &nbsp;TY-CSE-A workspace</span>
+          <span class="chip">Invite: LINKORA-2026</span>
+        </div>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="projects.html">Project Discovery</a></li>
+          <li><a href="matches.html">Matches</a></li>
+          <li><a href="workspace.html">Team Workspace</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Academic</h4>
+        <ul>
+          <li><a href="faculty.html">Faculty Dashboard</a></li>
+          <li><a href="admin.html">Administration</a></li>
+          <li><a href="notifications.html">Notifications</a></li>
+          <li><a href="applications.html">Requests</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Linkora</a></li>
+          <li><a href="about.html#faq">FAQ</a></li>
+          <li><a href="about.html#privacy">Privacy Policy</a></li>
+          <li><a href="about.html#terms">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 Linkora · Class Project Team Formation &amp; Collaboration Platform</span>
+      <span>Built for TY-CSE-A · Guide: Prof. S. Deshpande</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+function pageInit(){}
+
+function pageInit(){
+  const u = me(); if(!u) return;
+  document.getElementById('greet').textContent = 'Hello, ' + u.name.split(' ')[0] + ' 👋';
+
+  // recommended projects
+  const scored = db.projects.map(p=>({p, s:compatScore(u,p)})).sort((a,b)=>b.s.total-a.s.total);
+  document.getElementById('recs').innerHTML = scored.slice(0,3).map(x=>`
+    <div class="card hover">
+      <div class="row-b" style="margin-bottom:.6rem">
+        <span class="badge b-brand">${x.p.domain}</span>${scoreRing(x.s.total,true)}
+      </div>
+      <h3>${x.p.title}</h3>
+      <p class="small">${x.p.tagline}</p>
+      <div class="row" style="gap:.35rem;margin:.6rem 0">${chips(x.p.roles.filter(r=>!r.filled).slice(0,2).map(r=>r.role))}</div>
+      <div class="row-b small muted mt-1" style="border-top:1px dashed var(--stroke);padding-top:.6rem">
+        <span>⏳ ${x.p.deadline}</span>
+        <a class="btn btn-sm btn-primary" href="project-details.html?id=${x.p.id}">View</a>
+      </div>
+    </div>`).join('');
+
+  // invitations
+  const inv = db.invitations.filter(i=>i.to===db.user);
+  document.getElementById('invites').innerHTML = inv.length ? inv.map(i=>{
+    const p = P(i.project);
+    return `<div class="item">${avImg(U(p.owner),'sm')}
+      <div class="grow"><div class="t">${p.title}</div><div class="s">Invited as <b>${i.role}</b> · ${i.date}</div></div>
+      ${i.status==='pending'
+        ? `<button class="btn btn-sm btn-ok" onclick="respond('${i.id}',1)">Accept</button><button class="btn btn-sm btn-danger" onclick="respond('${i.id}',0)">Decline</button>`
+        : `<span class="badge ${i.status==='accepted'?'b-ok':'b-bad'}">${i.status}</span>`}</div>`;
+  }).join('') : emptyBox('No pending invitations right now.','📭');
+
+  // my applications
+  const apps = db.applications.filter(a=>a.from===db.user);
+  document.getElementById('apps').innerHTML = apps.length ? apps.map(a=>{
+    const p = P(a.project);
+    return `<div class="item">${avImg(U(p.owner),'sm')}
+      <div class="grow"><div class="t">${p.title}</div><div class="s">Applied for <b>${a.role}</b> · ${a.date}</div></div>
+      <span class="badge ${a.status==='accepted'?'b-ok':a.status==='rejected'?'b-bad':'b-warn'}">${a.status}</span></div>`;
+  }).join('') : emptyBox('You have not applied to any project yet.','📄');
+
+  // team status
+  const mine = db.projects.filter(p=>p.owner===db.user || p.members.includes(db.user));
+  document.getElementById('teams').innerHTML = mine.map(p=>{
+    const g = skillGaps(p);
+    const filled = p.roles.filter(r=>r.filled).length;
+    return `<div class="card pad-sm">
+      <div class="row-b"><b>${p.title}</b><span class="badge ${filled===p.roles.length?'b-ok':'b-warn'}">${filled}/${p.roles.length} roles</span></div>
+      <div class="bar thin" style="margin:.6rem 0"><i data-w="${Math.round(filled/p.roles.length*100)}"></i></div>
+      <div class="small muted">Missing skills: ${g.open.length? g.open.slice(0,3).join(', ') : 'none — team is balanced'}</div>
+      <a class="btn btn-sm mt-1" href="workspace.html?p=${p.id}">Open workspace</a></div>`;
+  }).join('') || emptyBox('You are not part of a team yet. Apply or create a project.','🧩');
+
+  // inclusive suggestions: open teams for students with no project
+  const unassigned = db.users.filter(x=>!db.projects.some(p=>p.members.includes(x.id)));
+  document.getElementById('unassigned').innerHTML = unassigned.length ? unassigned.map(x=>`
+    <div class="item">${avImg(x,'sm')}
+      <div class="grow"><div class="t">${x.name}</div><div class="s">${x.roll} · ${(x.skills[0]?x.skills[0].n:'No skills listed')}</div></div>
+      <button class="btn btn-sm btn-ok" onclick="toast('Recommendation sent to ${x.name.split(' ')[0]}')">Suggest team</button></div>`).join('')
+    : emptyBox('Everyone in class has a team.','🎉');
+
+  // profile completeness
+  const pct = Math.min(100, Math.round((u.skills.length/5)*40 + (u.interests.length/3)*25 + (u.roles.length/2)*20 + (u.availability?15:0)));
+  document.getElementById('completeness').innerHTML = progress(pct, 'Profile completeness');
+  animateBars();
+}
+function respond(id, accept){
+  const inv = db.invitations.find(i=>i.id===id); if(!inv) return;
+  const p = P(inv.project);
+  if(accept){
+    inv.status='accepted';
+    const role = p.roles.find(r=>r.role===inv.role && !r.filled);
+    if(role) role.filled = inv.to;
+    if(!p.members.includes(inv.to)) p.members.push(inv.to);
+    db.notifications.unshift({id:'n'+Date.now(),type:'team',title:'Invitation accepted',body:'You joined '+p.title+' as '+inv.role+'.',time:'Just now',read:false,icon:'✅'});
+    toast('Joined '+p.title+' 🎉');
+  } else {
+    inv.status='declined'; toast('Invitation declined','warn');
+  }
+  saveDB(); setTimeout(()=>location.reload(), 800);
+}
+
+</script>
+</body>
+</html>
