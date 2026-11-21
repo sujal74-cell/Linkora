@@ -2044,7 +2044,7 @@ body:has(#splash) .orb{animation-play-state:paused}
    Motion is transform/opacity-only; the logo PNG is never altered.
    ============================================================ */
 [data-logo]{perspective:780px}
-[data-logo]:not(#splash-logo){--lk-pad:11%}
+[data-logo]:not(#splash-logo){--lk-pad:0%}
 .lk{position:relative;display:block;width:100%;height:100%;isolation:isolate;transform-style:preserve-3d}
 .lk>*{position:absolute;pointer-events:none}
 
@@ -2056,16 +2056,8 @@ body:has(#splash) .orb{animation-play-state:paused}
   animation:lkAmbientV24 5.6s ease-in-out infinite alternate}
 @keyframes lkAmbientV24{from{opacity:.38}to{opacity:.62}}
 
-/* brushed-metal glass tile behind the mark (navbar / login / footer) */
+/* brushed-metal glass tile disabled — logo renders directly without dark backing */
 .lk-plate{display:none}
-[data-logo]:not(#splash-logo) .lk-plate{display:block;inset:0;z-index:1;border-radius:23%;transform:translateZ(-12px);
-  background:linear-gradient(156deg,#273055 0%,#161d38 36%,#0f1430 68%,#090d21 100%);
-  border:1px solid rgba(158,201,255,.26);
-  box-shadow:inset 0 1.5px 0 rgba(255,255,255,.34),inset 0 -9px 16px rgba(0,0,0,.55),inset 0 0 26px rgba(56,189,248,.07),0 3px 9px rgba(2,6,23,.42),0 0 26px rgba(99,102,241,.30)}
-.lk-plate::before{content:"";position:absolute;left:9%;right:9%;top:6%;height:25%;border-radius:46% 46% 42% 42%;
-  background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(255,255,255,0));opacity:.7}
-.lk-plate::after{content:"";position:absolute;left:17%;right:17%;bottom:6%;height:17%;border-radius:50%;
-  background:radial-gradient(ellipse,rgba(139,92,248,.40),transparent 70%);opacity:.85}
 
 /* controlled bloom — blurred copy of the mark, splash only */
 .lk-bloom{display:none}
