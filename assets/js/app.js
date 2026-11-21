@@ -340,48 +340,172 @@ document.addEventListener("DOMContentLoaded", ()=>{
         });
       }, {passive:true});
 
-      /* starfield */
+      /* Interactive 3D Neural Network Background */
       var canvas = document.createElement("canvas");
       canvas.id = "stars";
       document.body.insertBefore(canvas, document.body.firstChild);
       var ctx = null;
       try{ ctx = canvas.getContext("2d"); }catch(e){ ctx = null; }
-      if(false && ctx){ /* starfield disabled — light theme */
-        var W = 0, H = 0, stars = [];
+      if(ctx){
+        var W = 0, H = 0, dpr = 1, nodes = [], maxDist = 145;
+        var mx = -9999, my = -9999, cmx = -9999, cmy = -9999, mouseActive = false;
+        var palette = [
+          [56, 189, 248],  /* cyan */
+          [59, 130, 246],  /* electric blue */
+          [139, 92, 246],  /* neon purple */
+          [34, 211, 238]   /* bright cyan */
+        ];
         function resize(){
-          W = canvas.width = window.innerWidth;
-          H = canvas.height = window.innerHeight;
-          var n = Math.min(150, Math.max(60, Math.round(W * H / 16000)));
-          stars = [];
-          for(var i = 0; i < n; i++){
-            stars.push({
-              x: Math.random() * W, y: Math.random() * H,
-              r: Math.random() * 1.4 + 0.3,
-              p: Math.random() * Math.PI * 2,
-              s: 0.4 + Math.random() * 1.1,
-              hue: [210, 190, 265, 320][Math.floor(Math.random() * 4)]
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          W = window.innerWidth;
+          H = window.innerHeight;
+          canvas.width = Math.round(W * dpr);
+          canvas.height = Math.round(H * dpr);
+          canvas.style.width = W + "px";
+          canvas.style.height = H + "px";
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          maxDist = W < 640 ? 110 : 150;
+          var target = W < 640 ? 65 : Math.min(180, Math.max(85, Math.round(W * H / 10500)));
+          nodes = [];
+          for(var i = 0; i < target; i++){
+            var z = 0.2 + Math.random() * 0.8; /* 0.2 = near, 1.0 = far */
+            var col = palette[i % palette.length];
+            nodes.push({
+              x: Math.random() * W,
+              y: Math.random() * H,
+              z: z,
+              vx: (Math.random() - 0.5) * (0.28 + (1 - z) * 0.28),
+              vy: (Math.random() - 0.5) * (0.28 + (1 - z) * 0.28),
+              vz: (Math.random() - 0.5) * 0.0018,
+              r: (1.1 + (1 - z) * 1.9),
+              phase: Math.random() * Math.PI * 2,
+              col: col
             });
           }
         }
         resize();
         window.addEventListener("resize", resize);
-        var t = 0;
+        if(!reduce && window.matchMedia && window.matchMedia("(pointer: fine)").matches){
+          document.addEventListener("pointermove", function(e){
+            mx = e.clientX; my = e.clientY; mouseActive = true;
+          }, {passive:true});
+          document.addEventListener("pointerleave", function(){ mouseActive = false; }, {passive:true});
+        }
+        var t = 0, rafId = 0;
         function frame(){
+          if(document.hidden){ rafId = 0; return; }
           t += 0.016;
           ctx.clearRect(0, 0, W, H);
-          for(var i = 0; i < stars.length; i++){
-            var st = stars[i];
-            var a = 0.25 + 0.55 * (0.5 + 0.5 * Math.sin(st.p + t * st.s));
+
+          /* soft atmospheric blue & purple lighting */
+          var g1 = ctx.createRadialGradient(W * 0.22, H * 0.18, 0, W * 0.22, H * 0.18, Math.max(W, H) * 0.55);
+          g1.addColorStop(0, "rgba(59,130,246,0.11)");
+          g1.addColorStop(1, "rgba(59,130,246,0)");
+          ctx.fillStyle = g1;
+          ctx.fillRect(0, 0, W, H);
+
+          var g2 = ctx.createRadialGradient(W * 0.80, H * 0.78, 0, W * 0.80, H * 0.78, Math.max(W, H) * 0.55);
+          g2.addColorStop(0, "rgba(139,92,246,0.10)");
+          g2.addColorStop(1, "rgba(139,92,246,0)");
+          ctx.fillStyle = g2;
+          ctx.fillRect(0, 0, W, H);
+
+          /* smooth cursor light */
+          if(mouseActive){
+            if(cmx < -1000){ cmx = mx; cmy = my; }
+            cmx += (mx - cmx) * 0.10;
+            cmy += (my - cmy) * 0.10;
+            var cg = ctx.createRadialGradient(cmx, cmy, 0, cmx, cmy, 210);
+            cg.addColorStop(0, "rgba(99,102,241,0.14)");
+            cg.addColorStop(0.5, "rgba(56,189,248,0.06)");
+            cg.addColorStop(1, "rgba(56,189,248,0)");
+            ctx.fillStyle = cg;
+            ctx.fillRect(cmx - 210, cmy - 210, 420, 420);
+          }
+
+          /* update & project 3D particles */
+          for(var i = 0; i < nodes.length; i++){
+            var p = nodes[i];
+            if(!reduce){
+              p.x += p.vx; p.y += p.vy; p.z += p.vz;
+              if(p.x < -20) p.x = W + 20; else if(p.x > W + 20) p.x = -20;
+              if(p.y < -20) p.y = H + 20; else if(p.y > H + 20) p.y = -20;
+              if(p.z < 0.2){ p.z = 0.2; p.vz *= -1; } else if(p.z > 1.0){ p.z = 1.0; p.vz *= -1; }
+              if(mouseActive){
+                var dxm = cmx - p.x, dym = cmy - p.y;
+                var dm2 = dxm * dxm + dym * dym;
+                if(dm2 < 28900 && dm2 > 1){
+                  var dm = Math.sqrt(dm2);
+                  var pull = (1 - dm / 170) * 0.22 * (1.2 - p.z);
+                  p.x += (dxm / dm) * pull;
+                  p.y += (dym / dm) * pull;
+                }
+              }
+            }
+          }
+
+          /* draw neural connections */
+          var maxDist2 = maxDist * maxDist;
+          ctx.lineWidth = 0.85;
+          for(var i = 0; i < nodes.length; i++){
+            var a = nodes[i];
+            for(var j = i + 1; j < nodes.length; j++){
+              var b = nodes[j];
+              var dx = a.x - b.x, dy = a.y - b.y;
+              var d2 = dx * dx + dy * dy;
+              if(d2 < maxDist2){
+                var depthFactor = 1 - (a.z + b.z) * 0.35;
+                var alpha = (1 - Math.sqrt(d2) / maxDist) * 0.26 * depthFactor;
+                if(alpha > 0.015){
+                  ctx.strokeStyle = "rgba(" + a.col[0] + "," + a.col[1] + "," + a.col[2] + "," + alpha.toFixed(3) + ")";
+                  ctx.beginPath();
+                  ctx.moveTo(a.x, a.y);
+                  ctx.lineTo(b.x, b.y);
+                  ctx.stroke();
+                }
+              }
+            }
+            /* cursor-to-particle connections */
+            if(mouseActive){
+              var dxc = cmx - a.x, dyc = cmy - a.y;
+              var dc2 = dxc * dxc + dyc * dyc;
+              if(dc2 < 28900){
+                var ac = (1 - Math.sqrt(dc2) / 170) * 0.32 * (1.15 - a.z * 0.5);
+                if(ac > 0.02){
+                  ctx.strokeStyle = "rgba(56,189,248," + ac.toFixed(3) + ")";
+                  ctx.beginPath();
+                  ctx.moveTo(a.x, a.y);
+                  ctx.lineTo(cmx, cmy);
+                  ctx.stroke();
+                }
+              }
+            }
+          }
+
+          /* draw 3D glowing particles */
+          for(var i = 0; i < nodes.length; i++){
+            var p = nodes[i];
+            var pulse = 0.72 + 0.28 * Math.sin(p.phase + t * 1.4);
+            var alpha = (0.28 + (1 - p.z) * 0.55) * pulse;
+            var r = p.r;
+            /* soft outer halo for closer particles */
+            if(p.z < 0.65){
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, r * 2.6, 0, Math.PI * 2);
+              ctx.fillStyle = "rgba(" + p.col[0] + "," + p.col[1] + "," + p.col[2] + "," + (alpha * 0.18).toFixed(3) + ")";
+              ctx.fill();
+            }
             ctx.beginPath();
-            ctx.arc(st.x, st.y, st.r, 0, Math.PI * 2);
-            ctx.fillStyle = "hsla(" + st.hue + ",95%,82%," + a.toFixed(3) + ")";
+            ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(" + p.col[0] + "," + p.col[1] + "," + p.col[2] + "," + alpha.toFixed(3) + ")";
             ctx.fill();
           }
-          /* smooth cursor glow follow */
-          gx += (tx - gx) * 0.08; gy += (ty - gy) * 0.08;
-          glow.style.transform = "translate(" + (gx - 280) + "px," + (gy - 280) + "px)";
-          if(!reduce) requestAnimationFrame(frame);
+
+          if(!reduce) rafId = requestAnimationFrame(frame);
         }
+        document.addEventListener("visibilitychange", function(){
+          if(!document.hidden && !reduce && !rafId) rafId = requestAnimationFrame(frame);
+        });
         frame();
       } else {
         document.addEventListener("pointermove", function(e){

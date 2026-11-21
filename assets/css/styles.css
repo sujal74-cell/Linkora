@@ -789,7 +789,7 @@ body::after{
                    linear-gradient(90deg,rgba(15,28,52,.045) 1px,transparent 1px);
   opacity:.55;
 }
-#stars{display:none}
+#stars{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:1}
 #cursor-glow{display:none}
 #scroll-progress{background:linear-gradient(90deg,#4f46e5,#06b6d4,#db2777);box-shadow:0 0 12px rgba(99,102,241,.45)}
 #toTop{
