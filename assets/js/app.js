@@ -31,10 +31,87 @@ const NAV = [
   {href:"faculty.html",   label:"Faculty"},
   {href:"admin.html",     label:"Admin"}
 ];
+const SB_ICONS = {
+  "dashboard.html": '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>',
+  "projects.html": '<svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 012-2h5l2 2h7a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>',
+  "matches.html": '<svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7l3-7z"/></svg>',
+  "applications.html": '<svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>',
+  "workspace.html": '<svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>',
+  "faculty.html": '<svg viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>',
+  "admin.html": '<svg viewBox="0 0 24 24"><path d="M12 2l7 4v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-4z"/></svg>',
+  "notifications.html": '<svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>',
+  "profile.html": '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6 8-6s8 2 8 6"/></svg>'
+};
+
 function renderNav(active){
   document.querySelectorAll("[data-nav]").forEach(el=>{
     el.innerHTML = NAV.map(n=>`<a href="${n.href}" class="${n.href===active?'active':''}">${n.label}</a>`).join("");
   });
+  const noSb = ["index.html","login.html","register.html","404.html","about.html"];
+  if(noSb.includes(active) || document.getElementById("lk-sidebar")) return;
+  if(localStorage.getItem("lk_theme")==="light") document.body.classList.add("theme-light");
+  document.body.classList.add("has-sidebar");
+  if(localStorage.getItem("lk_sb_collapsed")==="1") document.body.classList.add("sb-collapsed");
+
+  const u = typeof me === "function" ? me() : null;
+  const unread = u && u.notifications ? u.notifications.filter(n=>!n.read).length : 0;
+  const pendingApps = typeof db !== "undefined" && db.applications && u ? db.applications.filter(a=>a.user===u.id && a.status==="pending").length : 0;
+
+  const links = NAV.map(n=>{
+    const ic = SB_ICONS[n.href] || '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/></svg>';
+    const badge = n.href==="notifications.html" && unread ? `<span class="sb-badge">${unread}</span>` :
+                  n.href==="applications.html" && pendingApps ? `<span class="sb-badge">${pendingApps}</span>` : "";
+    return `<a href="${n.href}" class="sb-link ${n.href===active?'active':''}" title="${n.label}">${ic}<span class="sb-label">${n.label}</span>${badge}</a>`;
+  }).join("");
+
+  const userHtml = u ? `<a href="profile.html" class="sb-user">
+    <img src="${avatarOf(u)}" alt="${u.name}" onerror="this.style.display='none'">
+    <div class="sb-user-meta"><div class="sb-user-name">${u.name}</div><div class="sb-user-cls">${u.cls||"Student"}</div></div>
+  </a>` : "";
+
+  const mobBtn = document.createElement("button");
+  mobBtn.className = "sb-mob-btn";
+  mobBtn.setAttribute("aria-label","Open menu");
+  mobBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>';
+  mobBtn.onclick = ()=>document.body.classList.toggle("sb-open");
+
+  const backdrop = document.createElement("div");
+  backdrop.className = "sb-backdrop";
+  backdrop.onclick = ()=>document.body.classList.remove("sb-open");
+
+  const sb = document.createElement("aside");
+  sb.id = "lk-sidebar";
+  sb.className = "lk-sidebar";
+  sb.innerHTML = `
+    <div class="sb-head">
+      <a href="dashboard.html" class="sb-brand"><span data-logo></span><span class="sb-brand-text">Linkora</span></a>
+      <button class="sb-toggle" id="sb-collapse-btn" title="Toggle sidebar" aria-label="Toggle sidebar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+    </div>
+    <nav class="sb-nav">${links}</nav>
+    <div class="sb-foot">
+      ${userHtml}
+      <div class="sb-actions">
+        <button class="sb-btn" id="sb-theme-btn" title="Toggle theme">🌙 <span class="sb-foot-label">Theme</span></button>
+        <button class="sb-btn danger" id="sb-logout-btn" title="Sign out">⎋ <span class="sb-foot-label">Sign out</span></button>
+      </div>
+    </div>`;
+
+  document.body.appendChild(backdrop);
+  document.body.appendChild(mobBtn);
+  document.body.appendChild(sb);
+
+  sb.querySelectorAll("[data-logo]").forEach(el=>{ if(!el.innerHTML.trim()) el.innerHTML = LOGO_SVG; });
+  document.getElementById("sb-collapse-btn").onclick = ()=>{
+    document.body.classList.toggle("sb-collapsed");
+    localStorage.setItem("lk_sb_collapsed", document.body.classList.contains("sb-collapsed")?"1":"0");
+  };
+  document.getElementById("sb-theme-btn").onclick = ()=>{
+    document.body.classList.toggle("theme-light");
+    localStorage.setItem("lk_theme", document.body.classList.contains("theme-light")?"light":"dark");
+  };
+  document.getElementById("sb-logout-btn").onclick = ()=>logout();
 }
 
 /* ---------- toasts ---------- */
