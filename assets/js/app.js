@@ -98,6 +98,11 @@ function scoreRing(v, sm=false){
 function progress(pct, label){
   return `<div style="margin:.4rem 0 .2rem"><div class="row-b small muted" style="margin-bottom:.3rem"><span>${label||""}</span><b>${pct}%</b></div><div class="bar"><i data-w="${pct}"></i></div></div>`;
 }
+function formatDateDMY(s){
+  if(!s) return "";
+  const m=String(s).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  return m?`${m[3]}/${m[2]}/${m[1]}`:s;
+}
 function projectCard(p, opts={}){
   const owner = U(p.owner), sc = db.user ? compatScore(U(db.user), p) : null;
   const open = (p.roles||[]).filter(r=>!r.filled);
@@ -117,7 +122,7 @@ function projectCard(p, opts={}){
       ${sc?`<div class="row" style="gap:.5rem">${scoreRing(sc.total,true)}<span class="small muted">match</span></div>`:`<span class="small muted">by ${owner.name.split(" ")[0]}</span>`}
     </div>
     <div class="row-b small muted" style="margin-top:.75rem;border-top:1px dashed var(--stroke);padding-top:.65rem">
-      <span>⏳ Apply by ${p.deadline}</span><span>${open.length} open role${open.length===1?"":"s"}</span>
+      <span>⏳ Apply by ${formatDateDMY(p.deadline)}</span><span>${open.length} open role${open.length===1?"":"s"}</span>
     </div>
   </a>`;
 }
