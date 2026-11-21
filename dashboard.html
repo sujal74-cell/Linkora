@@ -48,6 +48,10 @@
     <div class="card pad-sm"><div class="row-b"><div><div class="small muted">Applications</div><div style="font-size:1.7rem;font-weight:850" class="grad">2</div></div><div class="ficon" style="margin:0"><svg viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5zM14 3v5h5M9 13h6M9 17h4"/></svg></div></div></div>
     <div class="card pad-sm"><div class="row-b"><div><div class="small muted">Team status</div><div style="font-size:1.05rem;font-weight:850">Forming</div></div><div class="ficon" style="margin:0"><svg viewBox="0 0 24 24" fill="none"><path d="M16 19v-1a4 4 0 00-4-4H7a4 4 0 00-4 4v1M9.5 7a3.5 3.5 0 100 7 3.5 3.5 0 000-7zM21 19v-1a4 4 0 00-3-3.9"/></svg></div></div></div>
   </div>
+  <div class="mb-2">
+    <div class="row-b mb-1"><h2 style="margin:0;font-size:1.35rem">Recommended for you</h2><a href="projects.html" class="small" style="color:var(--brand-2)">See all →</a></div>
+    <div class="grid g3" id="recs"></div>
+  </div>
   <div class="split-b">
     <div class="list">
       <div class="card pad-sm">
@@ -59,13 +63,9 @@
         <div class="list" id="unassigned"></div>
       </div>
     </div>
-    <div>
-      <div class="row-b mb-1"><h2 style="margin:0;font-size:1.35rem">Recommended for you</h2><a href="projects.html" class="small" style="color:var(--brand-2)">See all →</a></div>
-      <div class="grid g3" id="recs"></div>
-      <div class="grid g2 mt-2">
-        <div class="card"><div class="row-b mb-1"><h3 style="margin:0">Invitations</h3><span class="badge b-ok">New</span></div><div class="list" id="invites"></div></div>
-        <div class="card"><div class="row-b mb-1"><h3 style="margin:0">My applications</h3><span class="badge b-warn">Pending</span></div><div class="list" id="apps"></div></div>
-      </div>
+    <div class="grid g2">
+      <div class="card"><div class="row-b mb-1"><h3 style="margin:0">Invitations</h3><span class="badge b-ok">New</span></div><div class="list" id="invites"></div></div>
+      <div class="card"><div class="row-b mb-1"><h3 style="margin:0">My applications</h3><span class="badge b-warn">Pending</span></div><div class="list" id="apps"></div></div>
     </div>
   </div>
 </main>
