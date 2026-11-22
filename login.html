@@ -41,7 +41,6 @@
         <div class="field"><label>Password</label><input class="input" name="password" type="password" required placeholder="••••••••"><div class="err"></div></div>
         <div class="row-b mb-2"><label class="checkline" style="font-size:.84rem"><input type="checkbox" checked><span>Keep me signed in</span></label><a href="#" class="small" style="color:var(--brand-2)">Forgot password?</a></div>
         <button class="btn btn-primary btn-block">Log in</button>
-        <button type="button" class="btn btn-block mt-1" onclick="demoLogin()">Explore as demo student</button>
         <p class="small center mt-2">New here? <a href="register.html" style="color:var(--brand-2);font-weight:700">Create an account</a></p>
       </form>
     </div>
@@ -147,7 +146,6 @@ function submitLogin(e){
   if(f.password.value.length < 6){ toast('Password must be at least 6 characters','warn'); return; }
   loginAs(u.id);
 }
-function demoLogin(){ loginAs('u1'); }
 
 </script>
 </body>
