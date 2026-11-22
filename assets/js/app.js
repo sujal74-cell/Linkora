@@ -131,9 +131,8 @@ const PUBLIC_PAGES = ["index.html","login.html","register.html","about.html"];
 function requireAuth(){
   const page = location.pathname.split("/").pop() || "index.html";
   if(!PUBLIC_PAGES.includes(page) && !db.user){
-    // Demo mode: sign in as the sample student so every page is browsable.
-    db.user = "u1"; saveDB();
-    setTimeout(()=>toast("Signed in as demo student — Aarav Sharma","info"), 700);
+    const next = encodeURIComponent(page + location.search);
+    location.replace("login.html?next=" + next);
   }
 }
 function loginAs(id){
