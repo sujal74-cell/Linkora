@@ -1,7 +1,7 @@
 # Linkora — Class Project Team Formation & Collaboration Platform
 
 Static site: HTML + CSS + vanilla JS. No build step, no dependencies.
-Class: TY-CSE-A · Guide: Prof. S. Deshpande
+Class:  · Guide: Prof. S. Deshpande
 
 ## IMPORTANT — index.html must be at the ROOT
 After unzipping you should see `index.html` directly inside the folder you deploy:
