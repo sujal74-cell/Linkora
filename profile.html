@@ -67,24 +67,20 @@
     </div>
     <div class="list">
       <div class="card">
-        <h3 style="margin-bottom:1rem">Basic details</h3>
+        <div class="row-b" style="margin-bottom:.7rem">
+          <h3 style="margin:0">Basic details</h3>
+          <span class="badge b-ok">Identity verified</span>
+        </div>
+        <p class="lockline"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg> Name, PRN, college email and class are locked after registration.</p>
         <div class="form-row">
-          <div class="field"><label>Full name</label><input class="input" id="p-name"></div>
-          <div class="field"><label>PRN number</label><input class="input" id="p-roll"></div>
+          <div class="field"><label>Full name</label><input class="input locked" id="p-name" readonly aria-readonly="true" tabindex="-1"></div>
+          <div class="field"><label>PRN number</label><input class="input locked" id="p-roll" readonly aria-readonly="true" tabindex="-1"></div>
         </div>
         <div class="form-row">
-          <div class="field"><label>College email</label><input class="input" id="p-email" disabled></div>
-          <div class="field"><label>Class / Division</label><select class="select" id="p-cls">
-              <option>MECH-A</option><option>MECH-B</option><option>MECH-C</option>
-              <option>ENTC-D</option><option>ENTC-E</option><option>ENTC-F</option>
-              <option>VLSI-G</option>
-              <option>CIVIL-H</option><option>CIVIL-RL-I</option>
-              <option>COMP-J</option><option>COMP-K</option><option>COMP-L</option><option>COMP-M</option>
-              <option>COMP-R-N</option>
-              <option>IT-O</option><option>IT-P</option>
-              <option>AI-ML-Q</option><option>AI-ML-R</option>
-            </select></div>
+          <div class="field"><label>College email</label><input class="input locked" id="p-email" readonly aria-readonly="true" tabindex="-1"></div>
+          <div class="field"><label>Class / Division</label><input class="input locked" id="p-cls" readonly aria-readonly="true" tabindex="-1"></div>
         </div>
+        <p class="hint" style="margin:-.2rem 0 1rem">Spotted a mistake? Ask your class coordinator — verified identity details can only be corrected by an admin.</p>
         <div class="field"><label>Weekly availability</label><input class="input" id="p-avail" placeholder="e.g. 10-15 hrs/week"></div>
         <div class="field"><label>Relevant experience</label><textarea class="textarea" id="p-exp" placeholder="Hackathons, internships, certifications, past projects…"></textarea></div>
         <div class="field"><label>Short bio</label><textarea class="textarea" id="p-bio" placeholder="One or two lines about how you like to work."></textarea></div>
@@ -211,9 +207,9 @@ function addSkill(){
 }
 function saveProfile(){
   const u = me(); if(!u) return;
-  u.name = document.getElementById('p-name').value.trim() || u.name;
-  u.roll = document.getElementById('p-roll').value.trim();
-  u.cls  = document.getElementById('p-cls').value;
+  // Identity fields (name, PRN, college email, class) are locked after
+  // registration — they are verified credentials, so we never copy the
+  // read-only inputs back onto the stored user.
   u.availability = document.getElementById('p-avail').value.trim();
   u.exp = document.getElementById('p-exp').value.trim();
   u.bio = document.getElementById('p-bio').value.trim();
