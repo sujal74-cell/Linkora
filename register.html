@@ -167,6 +167,26 @@ function submitLogin(e){
   if(f.password.value.length < 6){ toast('Password must be at least 6 characters','warn'); return; }
   loginAs(u.id);
 }
+(function(){
+  const CLS_TO_BRANCH = {
+    'MECH-A':'MECH','MECH-B':'MECH','MECH-C':'MECH',
+    'ENTC-D':'ENTC','ENTC-E':'ENTC','ENTC-F':'ENTC',
+    'VLSI-G':'VLSI',
+    'CIVIL-H':'CIVIL','CIVIL-RL-I':'CIVIL(RL)',
+    'COMP-J':'CS','COMP-K':'CS','COMP-L':'CS','COMP-M':'CS',
+    'COMP-R-N':'CS(RL)',
+    'IT-O':'IT','IT-P':'IT',
+    'AI-ML-Q':'CS(AL-ML)','AI-ML-R':'CS(AL-ML)'
+  };
+  const clsSel = document.querySelector('select[name="cls"]');
+  const brSel = document.querySelector('select[name="branch"]');
+  if(clsSel && brSel){
+    clsSel.addEventListener('change', ()=>{
+      const b = CLS_TO_BRANCH[clsSel.value];
+      if(b) brSel.value = b;
+    });
+  }
+})();
 function demoLogin(){ loginAs('u1'); }
 
 </script>
