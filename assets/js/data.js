@@ -9,11 +9,11 @@ const ROLES = ["Frontend Developer","Backend Developer","Full Stack Developer","
 const DOMAINS = ["Web Development","Mobile App","Machine Learning","Data Science","IoT","Cybersecurity","Cloud / DevOps","Blockchain","AR/VR","Robotics","Social Impact","FinTech","HealthTech","EdTech","Automation"];
 const CLASSES = [
   // First Year — AS & H 2026–27 timetable (Divisions A–R)
-  "FY-MECH-A","FY-MECH-B","FY-MECH-C",
-  "FY-ENTC-D","FY-ENTC-E","FY-ENTC-F","FY-VLSI-G",
-  "FY-CIVIL-H","FY-CIVIL-RL-I",
-  "FY-COMP-J","FY-COMP-K","FY-COMP-L","FY-COMP-M","FY-COMP-R-N",
-  "FY-IT-O","FY-IT-P","FY-AI-ML-Q","FY-AI-ML-R"
+  "MECH-A","MECH-B","MECH-C",
+  "ENTC-D","ENTC-E","ENTC-F","VLSI-G",
+  "CIVIL-H","CIVIL-RL-I",
+  "COMP-J","COMP-K","COMP-L","COMP-M","COMP-R-N",
+  "IT-O","IT-P","AI-ML-Q","AI-ML-R"
 ];
 
 const SEED = {
