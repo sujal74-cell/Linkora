@@ -44,10 +44,12 @@ const SB_ICONS = {
 };
 
 function renderNav(active){
+  const noSb = ["index.html","login.html","register.html","404.html","about.html"];
+  const loggedIn = typeof me === "function" && !!me();
   document.querySelectorAll("[data-nav]").forEach(el=>{
+    if(noSb.includes(active) && !loggedIn){ el.innerHTML = ""; return; }
     el.innerHTML = NAV.map(n=>`<a href="${n.href}" class="${n.href===active?'active':''}">${n.label}</a>`).join("");
   });
-  const noSb = ["index.html","login.html","register.html","404.html","about.html"];
   if(noSb.includes(active) || document.getElementById("lk-sidebar")) return;
   if(localStorage.getItem("lk_theme")==="light") document.body.classList.add("theme-light");
   document.body.classList.add("has-sidebar");
