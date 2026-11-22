@@ -120,7 +120,7 @@
 function pageInit(){}
 
 function pageInit(){
-  document.getElementById('a-users').innerHTML = `<div class="twrap"><table class="table">
+  document.getElementById('a-users').innerHTML = `<div class="twrap" tabindex="0" role="region" aria-label="Students table, scroll horizontally"><table class="table">
     <tr><th>Student</th><th>PRN</th><th>Class</th><th>Email</th><th>Skills</th><th>Status</th><th>Action</th></tr>
     ${db.users.map(u=>`<tr>
       <td><div class="row" style="gap:.5rem"><div class="avatar sm">${initials(u.name)}</div>${u.name}</div></td>
