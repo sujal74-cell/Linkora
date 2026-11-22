@@ -71,7 +71,7 @@ body{
   color:var(--text);
   -webkit-font-smoothing:antialiased;
   line-height:1.6;
-  overflow-x:hidden;
+  overflow-x:auto;
 }
 body::before{
   content:"";position:fixed;inset:0;z-index:-2;
@@ -184,7 +184,8 @@ p{margin:0 0 1rem;color:var(--muted)}
 .g3{grid-template-columns:repeat(3,1fr)}
 .g4{grid-template-columns:repeat(4,1fr)}
 .split{display:grid;grid-template-columns:1.15fr .85fr;gap:2.5rem;align-items:center}
-.split-b{display:grid;grid-template-columns:340px 1fr;gap:1.5rem;align-items:start}
+.split-b{display:grid;grid-template-columns:340px minmax(0,1fr);gap:1.5rem;align-items:start}
+.split-b > *, .split-b .list > *{min-width:0}
 
 /* ---------- chips / badges ---------- */
 .chip{
@@ -267,8 +268,7 @@ input[type=range]{width:100%;accent-color:var(--brand-1)}
 .stack .avatar:first-child{margin-left:0}
 
 /* ---------- tabs ---------- */
-.tabs{display:flex;gap:.35rem;padding:.35rem;border-radius:999px;background:var(--surface);border:1px solid var(--stroke);overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
+.tabs{display:flex;gap:.35rem;padding:.35rem;border-radius:999px;background:var(--surface);border:1px solid var(--stroke);overflow-x:auto}
 .tabs button{
   border:0;background:transparent;color:var(--muted);font-family:inherit;font-weight:700;font-size:.86rem;
   padding:.55rem 1rem;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.22s;
@@ -282,7 +282,8 @@ input[type=range]{width:100%;accent-color:var(--brand-1)}
 .table th{text-align:left;font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:.7rem .8rem;border-bottom:1px solid var(--stroke);font-weight:750}
 .table td{padding:.85rem .8rem;border-bottom:1px solid rgba(255,255,255,.06);vertical-align:middle}
 .table tr:hover td{background:rgba(255,255,255,.03)}
-.twrap{overflow-x:auto;border-radius:var(--r-m);border:1px solid var(--stroke)}
+.twrap{max-width:100%;overflow-x:auto;border-radius:var(--r-m);border:1px solid var(--stroke)}
+.twrap:focus-visible{outline:2px solid var(--brand-1);outline-offset:2px}
 
 /* ---------- kanban ---------- */
 .kanban{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
@@ -442,7 +443,7 @@ footer ul a:hover{color:#fff;transform:translateX(3px);display:inline-block}
   .g4{grid-template-columns:repeat(2,1fr)}
   .g3{grid-template-columns:repeat(2,1fr)}
   .split{grid-template-columns:1fr;gap:2rem}
-  .split-b{grid-template-columns:1fr}
+  .split-b{grid-template-columns:minmax(0,1fr)}
   .fgrid{grid-template-columns:1fr 1fr}
   .kanban{grid-template-columns:1fr}
 }

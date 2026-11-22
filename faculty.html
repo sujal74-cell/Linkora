@@ -112,7 +112,7 @@ function pageInit(){
     <div class="stat"><div class="n grad">${teams.length-filledTeams.length}</div><div class="k">Incomplete teams</div></div>
     <div class="stat"><div class="n grad">${unassigned.length}</div><div class="k">Unassigned students</div></div>`;
 
-  document.getElementById('f-teams').innerHTML = `<div class="twrap"><table class="table">
+  document.getElementById('f-teams').innerHTML = `<div class="twrap" tabindex="0" role="region" aria-label="Team overview table, scroll horizontally"><table class="table">
     <tr><th>Project</th><th>Domain</th><th>Owner</th><th>Roles filled</th><th>Progress</th><th>Status</th></tr>
     ${teams.map(p=>{
       const f = p.roles.filter(r=>r.filled).length;
@@ -135,7 +135,7 @@ function pageInit(){
         <a class="btn btn-sm" href="matches.html?p=${p.id}">View matches</a></div></div></div></div>`;
   }).join('') || emptyBox('Every team is complete.','🎉');
 
-  document.getElementById('f-unassigned').innerHTML = `<div class="twrap"><table class="table">
+  document.getElementById('f-unassigned').innerHTML = `<div class="twrap" tabindex="0" role="region" aria-label="Students without a team table, scroll horizontally"><table class="table">
     <tr><th>Student</th><th>PRN</th><th>Top skill</th><th>Availability</th><th>Suggested project</th><th>Action</th></tr>
     ${unassigned.map(u=>{
       const best = db.projects.map(p=>({p,s:compatScore(u,p)})).sort((a,b)=>b.s.total-a.s.total)[0];
