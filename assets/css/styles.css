@@ -318,6 +318,12 @@ section{padding:clamp(3rem,7vw,5.5rem) 0;position:relative}
 .hero{padding:clamp(3rem,8vw,6.5rem) 0 3rem}
 .hero h1{margin-bottom:1rem}
 .hero .lead{font-size:1.12rem;max-width:640px}
+
+/* hero with no side card (single centred column) */
+.hero-solo{max-width:920px;text-align:center}
+.hero-solo .lead{margin-inline:auto}
+.hero-solo .row{justify-content:center}
+.hero-solo .grid.g4{max-width:840px;margin-inline:auto;text-align:center}
 .orb{
   position:absolute;border-radius:50%;filter:blur(58px);opacity:.5;pointer-events:none;z-index:-1;
   animation:float 12s ease-in-out infinite;
