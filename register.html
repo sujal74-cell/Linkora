@@ -200,6 +200,12 @@ function submitLogin(e){
         if(brSel) brSel.value = rec.b;
         if(yrSel) yrSel.value = 'First Year';
         if(typeof toast === 'function') toast('Auto-filled details for ' + rec.n + ' (' + rec.c + ')');
+      } else if(!rec && lastMatched){
+        lastMatched = '';
+        if(nameInp) nameInp.value = '';
+        if(clsSel) clsSel.value = '';
+        if(brSel) brSel.selectedIndex = 0;
+        if(yrSel) yrSel.value = '';
       }
     };
     rollInp.addEventListener('input', tryFillPRN);
