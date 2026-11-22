@@ -127,6 +127,7 @@
     </div>
   </div>
 </footer>
+<script src="assets/js/prn-directory.js"></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
 <script>
@@ -178,11 +179,31 @@ function submitLogin(e){
   };
   const clsSel = document.querySelector('select[name="cls"]');
   const brSel = document.querySelector('select[name="branch"]');
+  const yrSel = document.querySelector('select[name="year"]');
+  const nameInp = document.querySelector('input[name="name"]');
+  const rollInp = document.querySelector('input[name="roll"]');
   if(clsSel && brSel){
     clsSel.addEventListener('change', ()=>{
       const b = CLS_TO_BRANCH[clsSel.value];
       if(b) brSel.value = b;
     });
+  }
+  if(rollInp && window.PRN_DIRECTORY){
+    let lastMatched = '';
+    const tryFillPRN = ()=>{
+      const prn = rollInp.value.trim().toUpperCase();
+      const rec = window.PRN_DIRECTORY[prn];
+      if(rec && prn !== lastMatched){
+        lastMatched = prn;
+        if(nameInp) nameInp.value = rec.n;
+        if(clsSel) clsSel.value = rec.c;
+        if(brSel) brSel.value = rec.b;
+        if(yrSel) yrSel.value = 'First Year';
+        if(typeof toast === 'function') toast('Auto-filled details for ' + rec.n + ' (' + rec.c + ')');
+      }
+    };
+    rollInp.addEventListener('input', tryFillPRN);
+    rollInp.addEventListener('change', tryFillPRN);
   }
 })();
 function demoLogin(){ loginAs('u1'); }
