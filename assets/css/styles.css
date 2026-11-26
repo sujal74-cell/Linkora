@@ -2253,7 +2253,6 @@ body:has(#splash) .orb{animation-play-state:paused}
 :root{--sb-w:256px}
 body.has-sidebar{padding-left:var(--sb-w);transition:padding-left .32s cubic-bezier(.22,1,.36,1)}
 body.has-sidebar.sb-collapsed{--sb-w:78px}
-body.has-sidebar .container{max-width:none;width:100%;margin-left:0;margin-right:0}
 body.has-sidebar header.nav{display:none}
 
 .lk-sidebar{
